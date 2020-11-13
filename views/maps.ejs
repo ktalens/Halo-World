@@ -1,0 +1,35 @@
+<h2>H5 Maps</h2>
+
+
+<%  mapsData.forEach(item=>{ %> 
+    <img src=<%= item.imageUrl %> height="100px" display="block">
+
+    <li>
+        <%= item.name %>  
+        <p>
+            Modes:<% if(item.supportedGameModes){%> 
+                <% item.supportedGameModes.forEach(mode=>{ %> 
+                    <%= mode %>
+                    <% }) %> 
+                <% } %> 
+            <br>
+            Description: <%= item.description %> <br>
+            ID: <%= item.id %> <br>
+            Content ID: <%= item.contentId %> <br>
+            <a method="GET" href="/variants/<%= item.id %> ">See Variants</a>
+                </p>
+    </li>
+<% }) %> 
+</ul>
+
+<h2>RESPONSE DATA STRUCTURE</h2>
+{
+    "name": "Urban",
+    "description": "Andesia was the crucible for countless heroes and villains caught in the throes of seething rebellion and righteous excess.",
+    "supportedGameModes": [
+      "Warzone"
+    ],
+    "imageUrl": "https://content.halocdn.com/media/Default/games/halo-5-guardians/map-images/warzone/warzone_maps_array08-b2c5175d0e8446c29e4fc6888492e5ff.jpg",
+    "id": "c93d708f-f206-11e4-a815-24be05e24f7e",
+    "contentId": "c93d708f-f206-11e4-a815-24be05e24f7e"
+  },

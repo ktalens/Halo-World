@@ -1,0 +1,22 @@
+<h2>Stats</h2>
+
+Gamertag: <%= stats.gamertag %> <br>
+Emblem: <img src="<%= stats.emblem %>"> <br>
+Games Played: <%= stats.gamesPlayed %> <br>
+Wins:  <%= stats.wins %>  <br>
+Losses:  <%= stats.losses %>  <br>
+WinRatio:  <%= stats.winRatio %>  <br>
+Kills per Game:  <%= stats.killsPerGame %>  <br>
+KD Ratio:  <%= stats.killDeathRatio %>  <br>
+Last 20 Record:
+<ol>
+    <% stats.last20.forEach(game=>{ %>
+        <li>
+            <% if(game === -1){ %>
+                <%= 'Loss' %>
+            <% } else if (game===1){ %>
+                <%= 'Win' %>
+            <% } %>
+        </li>
+    <% }) %> 
+</ol>

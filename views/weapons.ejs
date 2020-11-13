@@ -1,0 +1,25 @@
+<h2>Halo 5 Weapons</h2>
+
+<ul>
+    <%  weaponsData.forEach(item=>{ %> 
+        
+        <li> <%= item.name %> </li>
+        <small>
+            Type: <%= item.type %> 
+            Description: <%= item.description %> 
+        </small>
+        <img src=<%= item.largeIconImageUrl %> height="100px" >
+    <% }) %> 
+</ul>
+
+<h2>RESPONSE DATA STRUCTURE</h2>
+{
+    "name": "Flagnum",
+    "description": null,
+    "type": "Standard",
+    "largeIconImageUrl": "https://content.halocdn.com/media/Default/games/halo-5-guardians/tools-of-destruction/weapons/flagnum-282503fb5260409a844e29eeae45bbca.png",
+    "smallIconImageUrl": "https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d",
+    "isUsableByPlayer": true,
+    "id": "2244200496",
+    "contentId": "cc556937-465f-4286-a989-e4ac28e6988b"
+  },

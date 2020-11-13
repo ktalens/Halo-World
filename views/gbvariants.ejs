@@ -1,0 +1,30 @@
+<h2>Halo 5 gbv</h2>
+
+<ul>
+    <%  gbvData.forEach(item=>{ %> 
+        <img src=<%= item.iconUrl %> height="40px" >
+        <li> 
+            Name: <%= item.name %> <br>
+            (Internal Name: <%= item.internalName %> )<br>
+            ID: <%= item.id %> <br>
+            Content ID: <%= item.contentId %> <br>
+        </li>
+
+        
+    <% }) %> 
+</ul>
+
+<h2>RESPONSE DATA STRUCTURE</h2>
+
+{
+    "name": "Strongholds",
+    "internalName": "Strongholds",
+    "iconUrl": "https://content.halocdn.com/media/Default/games/halo-5-guardians/game-type-icons/stronghold-8a7cbb21223e4c0fac736492d04eff91.png",
+    "supportedGameModes": [
+      "Arena",
+      "Custom"
+    ],
+    "id": "1571fdac-e0b4-4ebc-a73a-6e13001b71d3",
+    "contentId": "1571fdac-e0b4-4ebc-a73a-6e13001b71d3"
+  }, 
+  ...]

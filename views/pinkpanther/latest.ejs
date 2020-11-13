@@ -1,0 +1,23 @@
+<h2>Latest</h2>
+
+Gamertag: <%= latest.gamertag %> <br>
+Last Game: <br>
+<ul>
+   Game Mode: <%= latest.games[0].gameVariant %> <br>
+   Result: <% if(latest.games[0].won===true){ %>
+       <%= 'Game Won' %>
+    <% }else { %>
+        <%= 'Game Lost' %>
+    <% } %><br>
+   Map Id: <%= latest.games[0].mapId %> <br>
+   Score: <%= latest.games[0].score %> <br>
+   Kills: <%= latest.games[0].kills %> <br>
+   Deaths: <%= latest.games[0].deaths %> <br>
+   Assists: <%= latest.games[0].assists %> <br>
+   Headshots: <%= latest.games[0].headshots %> <br>
+   Medals: <%= latest.games[0].medals %> <br>
+   KDR: <%= (latest.games[0].killDeathRatio).toPrecision(3) %> <br>
+   HSR: <%= (latest.games[0].headshotRate).toPrecision(2) %> <br>
+   Played: <%= latest.games[0].playedAt %>
+   Played at Regency: <%= latest.games[0].playedAtRecency %>
+</ul>
