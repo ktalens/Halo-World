@@ -8,9 +8,11 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn.js')
 const axios = require('axios')
 
+
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(express.urlencoded({extended: false}))
+app.use(express.static('public'))
 
 //session middleware
 app.use(session({
@@ -39,8 +41,35 @@ app.use((req, res, next)=>{
 app.use('/auth', require('./controllers/auth.js'))
 
 app.get('/', (req, res)=>{
-    res.render('home')
+    //res.render('home')
     //res.send('EXPRESS AUTH HOME ROUTE')
+    let weaponsUrl = `https://www.haloapi.com/metadata/h5/metadata/weapons?`
+    axios.get(weaponsUrl, {headers: {
+        'Accept-Language': 'en',
+        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
+    }} )
+    .then(weaponsResponse=>{
+        let mapsUrl= `https://www.haloapi.com/metadata/h5/metadata/maps?`
+        axios.get(mapsUrl, {
+            headers: {
+                'Accept-Language': 'en',
+                'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
+            }
+        })
+        .then(mapsResponse=>{
+            //res.send(mapsResponse.data)
+            res.render('home', {weaponsData: weaponsResponse.data, mapsData: mapsResponse.data})
+        })
+        //res.send(WeaponsResponse.data)
+        //res.render('weapons',{weaponsData: WeaponsResponse.data})
+        .catch(err=>{
+            res.send(err)
+        })
+            
+    })
+    .catch(err=>{
+        res.send(err)
+    })
 })
 
 app.get('/profile', isLoggedIn, (req, res)=>{
@@ -56,9 +85,34 @@ app.get('/weapons',(req,res)=>{
         'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
     }} )
     .then(response=>{
-        //res.send(response.data)
-        res.render('weapons',{weaponsData: response.data})
+        let allWeaps = response.data
+        let weaponFinder= req.query.id
+        if(weaponFinder){
+            filteredWeaps=allWeaps.filter(selectedWeap=>{
+                return selectedWeap.id===weaponFinder
+            })
+            res.render('weapons',{weaponsData: filteredWeaps, weaponsList:allWeaps})
+        } else {
+            res.render('weapons',{weaponsData: allWeaps, weaponsList: allWeaps})
+        }
+        //console.log('------------>',typeof weaponFinder,allWeaps)
+        //res.render('weapons',{weaponsData: allWeaps})
     })
+    .catch(err=>{
+        res.send(err)
+    })
+})
+
+app.post('/weapons?id=:idx',(req,res)=>{
+    res.send(req.body)
+    // axios.get(haloUrl, {headers: {
+    //     'Accept-Language': 'en',
+    //     'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
+    // }} )
+    // .then(response=>{
+    //     res.send(response.data)
+    //     //res.render('weapons',{weaponsData: response.data})
+    // })
 })
 
 app.get('/maps',(req,res)=>{
@@ -127,6 +181,7 @@ app.get('/profile',(req,res)=>{
 
 app.get('/pinkpanther/stats',(req,res)=>{
     let player= 'pinkpanther836'
+    //let player =''
     //let player = 'pinkpanther8_1'
     let haloUrl = `https://halo.api.stdlib.com/mcc@0.0.11/stats/?gamertag=${player}`
     axios.get(haloUrl)
@@ -153,6 +208,7 @@ app.get('/pinkpanther/latest',(req,res)=>{
 
 app.get('/pinkpanther/hist',(req,res)=>{
     let player= 'pinkpanther836'
+    //let player = 'tots45'
     let count = 100
     let haloUrl = `https://halo.api.stdlib.com/mcc@0.0.11/games/history/?gamertag=${player}&count=${count}`
     axios.get(haloUrl)

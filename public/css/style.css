@@ -1,0 +1,166 @@
+header {
+   border: 1px solid black;
+   background-color: rgba(19, 32, 76, 0.527);
+   text-align: center;
+   width: 800px;
+}
+h1{
+   font-family: 'Gruppo', cursive;
+}
+#special-ha {
+   font-family: 'Expletus Sans', cursive;
+
+}
+#special-o {
+   font-family: 'Macondo Swash Caps', cursive;
+   font-size: 110%;
+}
+#special-l {
+font-family: 'MuseoModerno', cursive; }
+
+.header{
+   display: inline;
+}
+h2.header{
+   float: left;
+   margin: -30px 0 0 20px;
+}
+body{
+    font-family: 'Baloo Tammudu 2', cursive;
+    background-color: rgba(71, 164, 204, 0.452);
+    color: black;
+    text-shadow: 1pt 1pt rgba(248, 248, 248, 0.378);
+ }
+
+ /* font-family: 'Cute Font', cursive;
+ font-family: 'Macondo Swash Caps', cursive;
+ font-family: 'Expletus Sans', cursive; ---FOR THE HA
+ font-family: 'MuseoModerno', cursive; ---FOR THE L
+font-family: 'Baloo Tammudu 2', cursive;*/
+
+ main {
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+
+    font-family: 'Baloo Tammudu 2', cursive;
+ }
+ h2 {
+   font-family: 'Cute Font', cursive;
+    color: black;
+    text-shadow: 1pt 1pt rgba(19, 32, 76, 0.377);
+ }
+  
+ nav {
+    float:right;
+    display: inline;
+    font-family: 'Cute Font', cursive;
+    font-size: smaller;
+    margin: -33px 10px;
+    text-shadow: .5pt .5pt rgba(0, 0, 0, 0.425);
+ }
+ a:link{
+   color: white;
+   }
+a:visited{
+   color: rgb(60, 231, 180);
+}
+
+ li {
+    list-style-type: none;
+    display: inline;
+    font-family: 'Baloo Tammudu 2', cursive;
+    
+ }
+ 
+ .login {
+    width: 800px;
+ margin: 0 auto;
+ text-align: center;
+ display: flexbox;
+ flex-direction: column;
+}
+
+.login-entry{
+   border: 1px solid black;
+   display: flexbox;
+   flex-direction: row;
+}
+ .userCredentials {
+   border: 1px solid black;
+   width: 45%;
+   display: inline-block;
+ }
+
+ .game-item{
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    border: 1px solid black;
+    flex-basis: 1fr 1fr;
+    
+ }
+#img-with-name{
+   text-align: center;
+}
+
+ .item-wrapper{
+   display: inline-flex;
+   border: 1px solid black;
+   
+ }
+
+.nav-dropdown{
+   position: relative;
+   display: inline-block;
+}
+
+ .drop-btn {
+    cursor: pointer;
+    background-color: rgba(240, 248, 255, 0);
+    border: rgba(240, 248, 255, 0);
+    border-radius: 6px;
+    font-family: 'Baloo Tammudu 2', cursive;
+    color: aliceblue;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.747);
+    padding: 0 0;
+ }
+
+.drop-btn:hover, .drop-btn:focus {
+    color: rgb(19, 44, 71);
+ }
+
+.dropdown-options{
+   display: none;
+   position: absolute;
+   margin-top: -9px;
+   background-color: rgba(19, 44, 71, 0.938);
+   z-index: 1;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.705);
+   padding-left: 0;
+   border-bottom: .5px solid aliceblue;
+   min-width: 140px;
+}
+
+.dropdown-options a {
+   color:  aliceblue;
+   display:block;
+   border-style: solid;
+   border-color: rgb(255, 255, 255);
+   border-width: .5px 1px 0px 1px;
+   width: auto;
+   padding: 0 0 0 0;
+   font-size: smaller;
+   margin-left: 0;
+   text-shadow: .75px .75px rgba(0, 0, 0, 0.774);
+}
+
+.dropdown-options a:hover {
+   background-color:rgba(59, 96, 134, 0.438);
+}
+
+.show {
+   display: block;
+}

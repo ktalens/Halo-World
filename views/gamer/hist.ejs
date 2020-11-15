@@ -1,11 +1,13 @@
 <h2>Hist</h2>
+<h3><%= matches.gamertag %> </h3>
+
 <details>
     Summary:
-    KDR: <%= matches.summary.killDeathRatio %> <br>
-    Headshot Rate: <%= matches.summary.headshotRate %> <br>
-    Kills per Game: <%= matches.summary.killsPerGame %> <br>
-    Deaths per Game: <%= matches.summary.deathsPerGame %> <br>
-    Headshots per Game: <%= matches.summary.headshotsPerGame %> <br>
+    KDR: <%= (matches.summary.killDeathRatio).toPrecision(3) %> <br>
+    Headshot Rate: <%= (matches.summary.headshotRate).toPrecision(3) %> <br>
+    Kills per Game: <%= (matches.summary.killsPerGame).toPrecision(2) %> <br>
+    Deaths per Game: <%= (matches.summary.deathsPerGame).toPrecision(2) %> <br>
+    Headshots per Game: <%= (matches.summary.headshotsPerGame).toPrecision(2) %> <br>
 </details>
 
 

@@ -1,1 +1,27 @@
-<h2>Auth Home</h2>
+<h2>HOME</h2>
+
+<section>
+    <h3>Quick Search:</h3>
+
+    <form>
+        <label for="gamertag">Stats by Gamertag:</label>
+        <input id="gamertag" name="gamertag" type="text">
+        <input type="submit" value="Go">
+    </form>
+    
+    
+
+    <form>
+        <label for="maps">Maps:</label>
+        <select id="maps" name="maps">
+            <% mapsData.forEach(map=>{ %> 
+               <option value="<%= map.id %>"><%= map.name %></option> 
+            <%  }) %> 
+        </select>
+        <input type="submit" value="Go">
+    </form>
+
+
+</section>
+
+
