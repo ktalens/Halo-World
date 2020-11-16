@@ -1,39 +1,33 @@
-<h2>Signup</h2>
-<form method="POST" action="/auth/signup">
-    <label for="new-name">Name</label>
-    <input type="text" name="name" id="new-name">
+<h2>LANDING PAGE</h2>
 
-    <label for="new-email">Email</label>
-    <input type="email" name="email" id="new-email">
-
-    <label for="new-password">Password</label>
-    <input type="password" name="password" id="new-password">
-
-    <input type="submit" value="Sign Up">
-</form>
 
 <main class= "login">
     <h3>Login or Create a Profile</h3>
         <div class= "login-entry">
-            <section class="userCredentials">
-            <form id = "enter-credentials">
-                <label for="user">Email:</label>
-                <input id="user" name="user" type="text"><br>
-                <label for="password">Password:</label>
-                <input id="password" name="password" type="text"><br>
-                <input type="submit" value="Log In">
-            </form>
+            <section class="landing-page" id="login">
+                <form method="POST" action="/auth/login">
+                    <label for="auth-email">Email</label>
+                    <input type="email" id="auth-email" name="email">
+                <br>    
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" name="password">
+                <br>
+                    <input type="submit" value="Log In">
+                </form>
             </section>
-            <section class="userCredentials">
-            <form id = "enter-credentials">
-                <label for="user">Enter Email:</label>
-                <input id="user" name="user" type="text"><br>
-                <label for="gamertag">Enter Gamertag:</label>
-                <input id="gamertag" name="gamertag" type="text"><br>
-                <label for="password">Choose Password:</label>
-                <input id="password" name="password" type="text"><br>
-                <input type="submit" value="Create Profile">
-            </form>
+            <section class="landing-page" id="signup">
+                <form method="POST" action="/auth/signup">
+                    <label for="new-gamertag">Gamertag</label>
+                    <input type="text" name="gamertag" id="new-gamertag">
+                <br>
+                    <label for="new-email">Email</label>
+                    <input type="email" name="email" id="new-email">
+                <br>
+                    <label for="new-password">Password</label>
+                    <input type="password" name="password" id="new-password">
+                <br>
+                    <input type="submit" value="Sign Up">
+                </form>
         </section>
         </div>
 </main>

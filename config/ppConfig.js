@@ -10,7 +10,7 @@ passport.serializeUser((user, doneCallback)=>{
 })
 
 passport.deserializeUser((id, doneCallback)=>{
-    db.user.findbyPk(id)
+    db.user.findByPk(id)
     .then(foundUser=>{
         console.log('deserializing User')
         doneCallback(null, foundUser)
@@ -23,8 +23,12 @@ passport.deserializeUser((id, doneCallback)=>{
 const findAndLogInUser = ((email, password, doneCallback)=>{
     db.user.findOne({where: {email: email}})
     .then( async foundUser=>{
-        let match = await foundUser.validPassword(password)
+        let match 
+        if (foundUser){
+            match= await foundUser.validPassword(password)
+        }
         if(!foundUser || !match){
+            console.log('password was NOT validated')
             return doneCallback(null,false)
         } else {
             return doneCallback(null, foundUser)

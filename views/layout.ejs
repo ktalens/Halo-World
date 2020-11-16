@@ -14,24 +14,30 @@
 <body>
     <header>
         <h1><span id="special-ha">HA</span><span id="special-l">L</span><span id="special-o">O</span>, <span id="special-ha">W</span><span id="special-o">O</span><span id="special-ha">RLD!</span></h1>
-        <h2 class="header">WELCOME, <% if (!currentUser) {%>
-            <%= currentUser %>
+        <h2 class="header">WELCOME, <% if (currentUser) {%>
+            <%= currentUser.dataValues.gamertag %>
         <% } else { %>
-            <%= 'Guest' %>
+            <%= 'GUEST' %>
         <% } %>  !</h2>
         <nav> <ul>
-            <li><a href="/">Home</a></li>
-  || 
+            <li><a href="/">Home</a></li> || 
+            <!-- HALO WARS 2 MENU -->
             <div class= "nav-dropdown">
                 <button class= "drop-btn" id="hw2" onclick="openDropdown(event)">Halo Wars 2</button>
                 <ul class= "dropdown-options" id="hw2Options">
                     <li><a href="/saved/weapons">My Weapons</a></li> 
                     <li><a href="/hw2/weapons">Game Weapons</a></li>
                 </ul>
-            </div> ||
+            </div> || 
+            <!-- HALO 5 MENU -->
              <div class= "nav-dropdown">
                 <button class= "drop-btn" id="halo5" onclick="openDropdown(event)">Halo 5</button>
                 <ul class= "dropdown-options" id="halo5Options">
+                    <li><a href="#">Strategies</a></li> 
+                    <li><a id="h5Stats" onclick="openDropdown(event)">H5 Stats ></a></li>
+                        <ul class= "dropdown-options submenu" id="h5StatsOptions">
+                            <li><a href="/h5/stats">General Player Stats</a></li> 
+                        </ul>
                     <li><a href="/saved/h5/weapons">My Weapons</a></li> 
                     <li><a href="/saved/h5/maps">My Maps</a></li> 
                     <li><a href="/h5/weapons">Game Weapons</a></li> 
@@ -39,16 +45,19 @@
                     <li><a href="/h5/gameBaseVariants">Game Variants</a></li>
                 </ul>
             </div> || 
+            <!-- HALO MCC MENU -->
             <div class= "nav-dropdown">
                 <button class= "drop-btn" id="mcc" onclick="openDropdown(event)">Halo MCC</button>
                 <ul class= "dropdown-options" id="mccOptions">
-                    <li><a href="#">Saved Strategies</a></li> 
-                    <li><a href="/gamer/stats">My Stats</a></li> 
-                    <li><a href="/gamer/latest">Last Game</a></li> 
-                    <li><a href="/gamer/hist">Recent History</a></li> 
-                    <li><a href="/gamer/activity">Activity*</a></li> 
+                    <li><a href="#">Strategies</a></li> 
+                    <li><a id="mccStats" onclick="openDropdown(event)">MCC Stats ></a></li>
+                        <ul class= "dropdown-options submenu" id="mccStatsOptions">
+                            <li><a href="/mcc/stats">General Player Stats</a></li> 
+                            <li><a href="/mcc/latest">Last Game</a></li> 
+                            <li><a href="/mcc/hist">Recent History</a></li> 
+                            <li><a href="/mcc/activity">Activity*</a></li> 
+                        </ul>
                 </ul>
-
             </div> || 
             <div class= "nav-dropdown">
                 <button class= "drop-btn" id="myProfile" onclick="openDropdown(event)">My Profile</button>

@@ -14,17 +14,17 @@ npm i
 ```json
 {
   "development": {
-    "database": "<insert develop db name here>",
+    "database": "halo_world_dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "<insert test db name here>",
+    "database": "halo_world_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "<insert poduction db name here>",
+    "database": "halo_world_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
@@ -35,7 +35,9 @@ npm i
 
 4. Create a database
 ```
-sequelize db:create <insert db name here>
+sequelize db:create users
+``````
+sequelize db:create users
 ```
 
 5. Migrate the `user` model to your database

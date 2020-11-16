@@ -17,13 +17,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   user.init({
-    name: {
+    gamertag: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        allowNull: false,
         len: {
-          args: [2,20],
-          msg: 'Name must be between 2 and 20 characters long.'
+          args: [2,30],
+          msg: 'Name must be between 2 and 30 characters long.'
         }
       }
     },
@@ -43,8 +43,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args: [8,99],
-          msg: 'Password must be between 8 and 99 characters.'
+          args: [0,99],
+          msg: 'Password must be between 0 and 99 characters.'
         }
       }
     }
@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     pendingUser.password= hashedPassword
   })
 
-  user.prototype.validPassword = async(passwordInput)=>{
+  user.prototype.validPassword = async function(passwordInput){
     let match = await bcrypt.compare(passwordInput, this.password)
     return match
   }

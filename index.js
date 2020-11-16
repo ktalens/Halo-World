@@ -39,6 +39,8 @@ app.use((req, res, next)=>{
 
 // use controllers
 app.use('/auth', require('./controllers/auth.js'))
+app.use('/h5',require('./controllers/h5.js'))
+app.use('/mcc',require('./controllers/mcc.js'))
 
 app.get('/', (req, res)=>{
     //res.render('home')
@@ -77,149 +79,14 @@ app.get('/profile', isLoggedIn, (req, res)=>{
     //res.send('EXPRESS AUTH HOME ROUTE')
 })
 
-app.get('/weapons',(req,res)=>{
-    let haloUrl = `https://www.haloapi.com/metadata/h5/metadata/weapons?`
-    
-    axios.get(haloUrl, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        let allWeaps = response.data
-        let weaponFinder= req.query.id
-        if(weaponFinder){
-            filteredWeaps=allWeaps.filter(selectedWeap=>{
-                return selectedWeap.id===weaponFinder
-            })
-            res.render('weapons',{weaponsData: filteredWeaps, weaponsList:allWeaps})
-        } else {
-            res.render('weapons',{weaponsData: allWeaps, weaponsList: allWeaps})
-        }
-        //console.log('------------>',typeof weaponFinder,allWeaps)
-        //res.render('weapons',{weaponsData: allWeaps})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
-
-app.post('/weapons?id=:idx',(req,res)=>{
-    res.send(req.body)
-    // axios.get(haloUrl, {headers: {
-    //     'Accept-Language': 'en',
-    //     'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    // }} )
-    // .then(response=>{
-    //     res.send(response.data)
-    //     //res.render('weapons',{weaponsData: response.data})
-    // })
-})
-
-app.get('/maps',(req,res)=>{
-    let haloUrl = `https://www.haloapi.com/metadata/h5/metadata/maps?`
-    
-    axios.get(haloUrl, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        //res.send(response.data)
-        res.render('maps',{mapsData: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
-
-app.get('/gameBaseVariants',(req,res)=>{
-    let haloUrl = `https://www.haloapi.com/metadata/h5/metadata/game-base-variants`
-    axios.get(haloUrl, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        //res.send(response.data)
-        res.render('gbvariants',{gbvData: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
-
-app.get('/variants/:idx',(req,res)=>{
-    let haloUrl = `https://www.haloapi.com/metadata/h5/metadata/map-variants/${req.params.idx}`
-    axios.get(haloUrl, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        res.send(response.data)
-    }
-
-    )
-})
-
-app.get('/profile',(req,res)=>{
-    let player= 'VERYCEREBRAL'
-    //'PinkPanther08'
-    let haloUrl = `https://www.haloapi.com/stats/h5/players/${player}/matches`
-    //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/appearance`
-    //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/spartan`
-    axios.get(haloUrl, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        //res.send(response.data.Results)
-        res.render('profile',{matchData: response.data.Results})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
 
 
-app.get('/pinkpanther/stats',(req,res)=>{
-    let player= 'pinkpanther836'
-    //let player =''
-    //let player = 'pinkpanther8_1'
-    let haloUrl = `https://halo.api.stdlib.com/mcc@0.0.11/stats/?gamertag=${player}`
-    axios.get(haloUrl)
-    .then(response=>{
-        //res.send(response.data.gamertag)
-        res.render('pinkpanther/stats',{stats: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
 
-app.get('/pinkpanther/latest',(req,res)=>{
-    let player= 'pinkpanther836'
-    let haloUrl = `https://halo.api.stdlib.com/mcc@0.0.11/games/latest/?gamertag=${player}`
-    axios.get(haloUrl)
-    .then(response=>{
-        res.render('pinkpanther/latest',{latest: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
 
-app.get('/pinkpanther/hist',(req,res)=>{
-    let player= 'pinkpanther836'
-    //let player = 'tots45'
-    let count = 100
-    let haloUrl = `https://halo.api.stdlib.com/mcc@0.0.11/games/history/?gamertag=${player}&count=${count}`
-    axios.get(haloUrl)
-    .then(response=>{
-        //res.send(response.data)
-        res.render('pinkpanther/hist',{matches: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
+
+
+
+
 
 
 

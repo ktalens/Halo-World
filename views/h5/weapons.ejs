@@ -1,6 +1,6 @@
 <h2>Halo 5 Weapons</h2>
 
-<form method="GET" action="/weapons" id="weaponform">
+<form method="GET" action="/h5/weapons" id="weaponform">
     <label for="weapons">Weapons:</label>
     <select id="weapons" name="id" form="weaponform">
         <% weaponsList.forEach(weap=>{ %> 
@@ -18,10 +18,10 @@
                 <img src=<%= item.largeIconImageUrl %> height="100px" >
                 <%= item.name %> 
                 <form>
-                    <input type="submit" value="favorite"
+                    <input type="submit" value="favorite">
                 </form>
             </div>
-            <div class="game-item">
+            <div class="game-item" id="game-item-desc">
                 <u>Type:</u> <%= item.type %> <br>
                 <u>Description:</u> <%= item.description %> <br>
             </div>

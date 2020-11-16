@@ -13,7 +13,7 @@ router.post('/signup', (req, res)=>{
     // otherwise create a new user and store them in the db
     db.user.findOrCreate({ // check if that email is already in db
         where: {email: req.body.email},
-        defaults: {name: req.body.name, password: req.body.password}
+        defaults: {gamertag: req.body.gamertag, password: req.body.password}
     }) // create new user if email wasn't found
     .then(([createdUser, wasCreated])=>{
         if(wasCreated){
@@ -31,7 +31,7 @@ router.post('/signup', (req, res)=>{
         //res.redirect('/auth/login')
     })
     .catch(err=>{
-        req.flash('error', err. message)
+        req.flash('error', err.message)
         res.redirect('/auth/signup')
     })
 })
