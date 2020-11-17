@@ -1,4 +1,4 @@
-<h2>H5 MAPS</h2>
+<h2>HALO 5 MAPS</h2>
 
 <form method="GET" action="/h5/maps" id="mapform">
     <label for="maps">Maps:</label>
@@ -17,8 +17,18 @@
                 <img src=<%= item.imageUrl %> height="100px" display="block">
                 <%= item.name %> 
                 <form method="POST" action="/h5/maps">
-                    <input type="hidden" type="text" name="userId" value="<%= currentUser.dataValues.id %>">
-                    <input type="hidden" type="text" name="gamertag" value="<%= currentUser.dataValues.gamertag %>">
+                    <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %>
+                        <%= currentUser.dataValues.id %>
+                    <% }else{ %> 
+                        <%= 'test1' %>
+                    <% } %>
+                    ">
+                    <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %>
+                        <%= currentUser.dataValues.gamertag %>
+                    <% }else{ %> 
+                        <%= 'VeryCerebral' %>
+                    <% } %>
+                    ">
                     <input type="hidden" type="text" name="id" value="<%= item.id %>">
                     <input type="hidden" type="text" name="type" value="<%= item.type %>">
                     <input type="hidden" type="text" name="name" value="<%= item.name %>">

@@ -84,7 +84,7 @@ a:visited{
 }
 
 .login-entry{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    display: flexbox;
    flex-direction: row;
 }
@@ -179,8 +179,10 @@ a:visited{
 
 .column {
    float: left;
-   width: 33%;
-   border: 1px solid black;
+   width: 33.1%;
+   border-style: solid;
+   border-color: rgb(0, 0, 0);
+   border-width: 0 1px 0 1px;
  }
  .row{
    width: 100%;
@@ -193,7 +195,7 @@ a:visited{
  }
  #homepage{
     width: 100%;
-    background-color: rgb(45, 65, 109);
+    background-color: rgb(66, 84, 122);
  }
 
 .quicksearch-results-display{
@@ -203,4 +205,8 @@ a:visited{
 
 .profile-container{
    background-color: rgba(167, 167, 167, 0.759);
+}
+
+.auth-form{
+   background: rgb(177, 196, 196);
 }

@@ -2,14 +2,15 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 const mccUrl = 'https://halo.api.stdlib.com/mcc@0.0.11/'
-let player= 'pinkpanther836'
+const isLoggedIn = require('../middleware/isLoggedIn.js')
+
 
 const axios = require('axios')
 
-router.get('/stats',(req,res)=>{
+router.get('/stats',isLoggedIn,(req,res)=>{
+    let player= res.locals.currentUser.gamertag
     axios.get(`${mccUrl}stats/?gamertag=${player}`)
     .then(response=>{
-        //res.send(response.data.gamertag)
         res.render('mcc/stats',{stats: response.data})
     })
     .catch(err=>{
@@ -17,21 +18,27 @@ router.get('/stats',(req,res)=>{
     })
 })
 
-router.get('/latest',(req,res)=>{
+router.get('/latest',isLoggedIn,(req,res)=>{
+    let player= res.locals.currentUser.gamertag
     axios.get(`${mccUrl}games/latest/?gamertag=${player}`)
     .then(response=>{
-        res.render('mcc/latest',{latest: response.data})
+        if(response.data.games.length>0){
+            res.render('mcc/latest',{latest: response.data})
+        } else if(response.data.games.length<1){
+            res.redirect('stats')
+        }
+        
     })
-    .catch(err=>{
+     .catch(err=>{
         res.send(err)
     })
 })
 
-router.get('/hist',(req,res)=>{
+router.get('/hist',isLoggedIn,(req,res)=>{
     let viewCount = 100
+    let player= res.locals.currentUser.gamertag
     axios.get(`${mccUrl}games/history/?gamertag=${player}&count=${viewCount}`)
     .then(response=>{
-        //res.send(response.data)
         res.render('mcc/hist',{matches: response.data})
     })
     .catch(err=>{

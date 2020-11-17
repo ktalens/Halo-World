@@ -1,4 +1,4 @@
-<h2>HALO 5: </h2>
+<h2>HALO 5: GENERAL PLAYER STATS </h2>
 <%= matchData[0].Players[0].Player.Gamertag %> 
 
 <% matchData.forEach(match=>{ %> 
@@ -8,13 +8,8 @@
     D: <%= match.Players[0].TotalDeaths %> <br>
     A: <%= match.Players[0].TotalAssists%> <br>
     <% }) %> 
-    "MatchDuration": "PT8M42.9534149S",
-    "MatchCompletedDate": {
-      "ISO8601Date": "2020-10-17T00:00:00Z"
-    
-    <p >
-        Links,Id,HopperId,MapId,MapVariant,GameBaseVariantId,GameVariant,MatchDuration,MatchCompletedDate,Teams,Players,IsTeamGame,SeasonId,MatchCompletedDateFidelity
-    
+
+<!--     
         {
             "Links": {
               "StatsMatchDetails": {
@@ -92,6 +87,6 @@
             "IsTeamGame": true,
             "SeasonId": "",
             "MatchCompletedDateFidelity": 1
-          },
-    </p>
+          }, -->
+
 

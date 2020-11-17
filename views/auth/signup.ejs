@@ -2,21 +2,10 @@
 
 
 <main class= "login">
-    <h3>Login or Create a Profile</h3>
+    <h3>CREATE A PROFILE: </h3>
         <div class= "login-entry">
-            <section class="landing-page" id="login">
-                <form method="POST" action="/auth/login">
-                    <label for="auth-email">Email</label>
-                    <input type="email" id="auth-email" name="email">
-                <br>    
-                    <label for="auth-password">Password</label>
-                    <input type="password" id="auth-password" name="password">
-                <br>
-                    <input type="submit" value="Log In">
-                </form>
-            </section>
             <section class="landing-page" id="signup">
-                <form method="POST" action="/auth/signup">
+                <form method="POST" action="/auth/signup" class="auth-form">
                     <label for="new-gamertag">Gamertag</label>
                     <input type="text" name="gamertag" id="new-gamertag">
                 <br>

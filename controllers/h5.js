@@ -3,8 +3,17 @@ const router = express.Router()
 const db = require('../models')
 const halo5Url = 'https://www.haloapi.com/metadata/h5/metadata/'
 const axios = require('axios')
+const isLoggedIn = require('../middleware/isLoggedIn.js')
 
-let player= 'VERYCEREBRAL'
+router.use(express.urlencoded({extended: false}))
+
+
+
+router.get('/test',(req,res)=>{
+    let player= res.locals.currentUser.gamertag
+    console.log(player)
+    res.send(player)
+})
 
 //  GET WEAPONS INDEX
 router.get('/weapons',(req,res)=>{  
@@ -30,7 +39,7 @@ router.get('/weapons',(req,res)=>{
 })
 
 //POST SAVED WEAPONS
-router.post('/weapons',(req,res)=>{
+router.post('/weapons',isLoggedIn,(req,res)=>{
     let faved = req.body
     db.user.findOne({
         where: {id: faved.userId}
@@ -71,7 +80,7 @@ router.post('/weapons',(req,res)=>{
 })
 
 // GET SAVED WEAPONS 
-router.get('/saved/weapons',(req,res)=>{
+router.get('/saved/weapons',isLoggedIn,(req,res)=>{
     db.user.findAll(
     {
         include: [db.weapon]
@@ -109,7 +118,7 @@ router.get('/maps',(req,res)=>{
 })
 
 //POST SAVED MAPS
-router.post('/maps',(req,res)=>{
+router.post('/maps',isLoggedIn,(req,res)=>{
     let faved = req.body
     db.user.findOne({
         where: {id: faved.userId}
@@ -150,7 +159,7 @@ router.post('/maps',(req,res)=>{
 })
 
 // GET SAVED mapS 
-router.get('/saved/maps',(req,res)=>{
+router.get('/saved/maps',isLoggedIn,(req,res)=>{
     db.user.findAll(
     {
         include: [db.map]
@@ -178,21 +187,11 @@ router.get('/gameBaseVariants',(req,res)=>{
     })
 })
 
-//GET MAP VARIANTS BY ID
-router.get('/variants/:idx',(req,res)=>{
-    axios.get(`${halo5Url}map-variants/${req.params.idx}`, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        res.send(response.data)
-    }
-    )
-})
+
 
 // GET PLAYER DATA
-router.get('/stats',(req,res)=>{
-
+router.get('/stats',isLoggedIn,(req,res)=>{
+    let player= res.locals.currentUser.gamertag
     let h5StatsUrl = `https://www.haloapi.com/stats/h5/players/${player}/matches`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/appearance`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/spartan`
@@ -208,5 +207,7 @@ router.get('/stats',(req,res)=>{
         res.send(err)
     })
 })
+
+
 
 module.exports = router

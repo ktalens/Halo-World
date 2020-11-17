@@ -40,9 +40,11 @@ app.use((req, res, next)=>{
 // use controllers
 app.use('/auth', require('./controllers/auth.js'))
 app.use('/h5',require('./controllers/h5.js'))
-app.use('/hw2',require('./controllers/hw2.js'))
 app.use('/mcc',require('./controllers/mcc.js'))
 app.use('/profile',require('./controllers/profile.js'))
+// app.use('/hw2',require('./controllers/hw2.js'))
+// REMOVED
+
 
 app.get('/', (req, res)=>{ 
     res.render('home',{gamerInfo:null})
@@ -120,16 +122,9 @@ app.post('/',(req,res)=>{
 })
 
 
-
-
-
-
-
-
-
-
-
-
+app.get('/test',(req,res)=>{
+    res.send(res.locals.currentUser)
+})
 
 
 app.listen(process.env.PORT, ()=>{

@@ -1,4 +1,4 @@
-<h2> <%= currentUser.dataValues.gamertag %> 's Profile</h2>
+<h2>PLAYER PROFILE: <%= currentUser.dataValues.gamertag %></h2>
 
 <div class="profile-container">
     <main>
@@ -14,13 +14,6 @@
                 <% } %> 
             </div>
             <div class="column">
-                <h2>HALO WARS 2</h2>
-                <h3>GAMEPLAY</h3><br>
-                <a href="/hw2/saved/weapons">Saved Weapons</a><br>
-                <a href="/hw2/saved/maps">Saved Maps</a><br>
-                <h3>PLAYER STATS</h3><br>
-            </div>
-            <div class="column">
                 <h2>HALO MCC</h2>
                 <h3>GAMEPLAY</h3><br>
                 <a href="/mcc/saved/strategies">Strategies</a><br>
@@ -30,6 +23,13 @@
                 <% if(haloMCC){  %>
                     <%- include('../partials/mccplayerstats.ejs') %> 
                 <% } %>   
+            </div>
+            <div class="column">
+                <h2>HALO WARS 2</h2>
+                <h3>GAMEPLAY</h3><br>
+                <p>(Coming soon...)</p>
+                <h3>PLAYER STATS</h3><br>
+                <p>(Coming soon...)</p>
             </div>
         </div>
     </main>

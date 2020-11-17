@@ -1,4 +1,4 @@
-<h2>Halo 5 gbv</h2>
+<h2>HALO 5 GAME BASE VARIANTS</h2>
 
 <ul>
     <%  gbvData.forEach(item=>{ %> 
@@ -6,16 +6,13 @@
         <li> 
             Name: <%= item.name %> <br>
             (Internal Name: <%= item.internalName %> )<br>
-            ID: <%= item.id %> <br>
-            Content ID: <%= item.contentId %> <br>
+            <input type= "hidden" name="gbvId" value="<%= item.id %> ">
         </li>
-
-        
     <% }) %> 
 </ul>
 
-<h2>RESPONSE DATA STRUCTURE</h2>
 
+<!-- 
 {
     "name": "Strongholds",
     "internalName": "Strongholds",
@@ -27,4 +24,4 @@
     "id": "1571fdac-e0b4-4ebc-a73a-6e13001b71d3",
     "contentId": "1571fdac-e0b4-4ebc-a73a-6e13001b71d3"
   }, 
-  ...]
+  ...] -->

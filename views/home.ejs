@@ -18,22 +18,31 @@
     <div class="row">
         <div class="column">
             <h2>Halo 5</h2>
-                
-    <a href="/h5/maps">See Maps</a><br>
-    <a href="/h5/weapons">See Weapons</a><br>
-        </div>
-        <div class="column">
-            <h2>Halo Wars 2</h2>
-            <a href="/hw2/maps">See Maps</a><br>
-            <a href="/hw2/weapons">See Weapons</a><br>
+            <a href="/h5/maps">See Maps</a><br>
+            <a href="/h5/weapons">See Weapons</a><br>
+            <% if (currentUser) {%>
+                <li><a href="#">My Game</a></li><br> 
+                <li><a href="/h5/saved/weapons">My Weapons</a></li><br> 
+                <li><a href="/h5/saved/maps">My Maps</a></li><br> 
+            <% } else { %>
+                <%= 'Sign-in or Create an Account to Save Game Info!' %>
+           <% } %>
         </div>
         <div class="column">
             <h2>Halo MCC</h2>
+            <% if (currentUser) {%>
+                <li><a href="#">My Game</a></li><br>
+            <% } else { %>
+                <%= 'Sign-in or Create an Account to Save Game Info!' %>
+           <% } %>
+
         </div>
+        <div class="column">
+            <h2>Halo Wars 2</h2>
+            <p>(Coming soon...)</p>
+        </div>
+        
     </div>
-    
 </main>
-<section>
-    <h2>Sign in to Add Friends</h2>
-</section>
+
 

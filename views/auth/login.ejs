@@ -1,11 +1,11 @@
-<h2>Login</h2>
+<h2>LOGIN</h2>
 
 
 <main class= "login">
-    <h2>Login or Create a Profile</h2>
+    <h2>LOG IN TO ACCESS YOUR PROFILE:</h2>
         <div class= "login-entry">
             <section class="landing-page" id="login">
-                <form method="POST" action="/auth/login">
+                <form method="POST" action="/auth/login" class="auth-form">
                     <label for="auth-email">Email</label>
                     <input type="email" id="auth-email" name="email">
                     <br>
@@ -15,16 +15,18 @@
                     <input type="submit" value="Log In">
                 </form>
             </section>
-            <section class="landing-page" id="signup">
-            <form id = "enter-credentials">
-                <label for="user">Enter Email:</label>
-                <input id="user" name="user" type="text"><br>
-                <label for="gamertag">Enter Gamertag:</label>
-                <input id="gamertag" name="gamertag" type="text"><br>
-                <label for="password">Choose Password:</label>
-                <input id="password" name="password" type="text"><br>
-                <input type="submit" value="Create Profile">
-            </form>
-        </section>
         </div>
 </main>
+
+
+<!-- <section class="landing-page" id="signup">
+    <form class="auth-form">
+        <label for="user">Enter Email:</label>
+        <input id="user" name="user" type="text"><br>
+        <label for="gamertag">Enter Gamertag:</label>
+        <input id="gamertag" name="gamertag" type="text"><br>
+        <label for="password">Choose Password:</label>
+        <input id="password" name="password" type="text"><br>
+        <input type="submit" value="Create Profile">
+    </form>
+</section> -->

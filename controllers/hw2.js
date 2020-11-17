@@ -4,7 +4,7 @@ const db = require('../models')
 const haloW2Url = 'https://www.haloapi.com/metadata/hw2/metadata/'
 const axios = require('axios')
 
-let player= 'VERYCEREBRAL'
+
 
 //  GET WEAPONS INDEX
 router.get('/gamedata/weapons',(req,res)=>{  
@@ -166,7 +166,7 @@ router.get('/saved/maps',(req,res)=>{
 
 // GET PLAYER DATA
 router.get('/stats',(req,res)=>{
-
+    let player= res.locals.currentUser.gamertag
     let hw2StatsUrl = `https://www.haloapi.com/stats/hw2/players/${player}/matches`
     //let haloUrl = `https://www.haloapi.com/profile/hw2/profiles/${player}/appearance`
     //let haloUrl = `https://www.haloapi.com/profile/hw2/profiles/${player}/spartan`
