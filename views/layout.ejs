@@ -25,8 +25,10 @@
             <div class= "nav-dropdown">
                 <button class= "drop-btn" id="hw2" onclick="openDropdown(event)">Halo Wars 2</button>
                 <ul class= "dropdown-options" id="hw2Options">
-                    <li><a href="/saved/weapons">My Weapons</a></li> 
-                    <li><a href="/hw2/weapons">Game Weapons</a></li>
+                    <li><a href="/hw2/saved/weapons">My Weapons</a></li> 
+                    <li><a href="/hw2/saved/maps">My Maps</a></li> 
+                    <li><a href="/hw2/gamedata/weapons">Game Weapons</a></li>
+                    <li><a href="/hw2/gamedata/maps">Game Maps</a></li>
                 </ul>
             </div> || 
             <!-- HALO 5 MENU -->
@@ -39,7 +41,7 @@
                             <li><a href="/h5/stats">General Player Stats</a></li> 
                         </ul>
                     <li><a href="/h5/saved/weapons">My Weapons</a></li> 
-                    <li><a href="/saved/h5/maps">My Maps</a></li> 
+                    <li><a href="/h5/saved/maps">My Maps</a></li> 
                     <li><a href="/h5/weapons">Game Weapons</a></li> 
                     <li><a href="/h5/maps">Game Maps</a></li> 
                     <li><a href="/h5/gameBaseVariants">Game Variants</a></li>
@@ -62,16 +64,17 @@
             <div class= "nav-dropdown">
                 <button class= "drop-btn" id="myProfile" onclick="openDropdown(event)">My Profile</button>
                 <ul class= "dropdown-options" id="myProfileOptions">
-                        <% if (!currentUser) { %> 
+                        
                             <% if (!currentUser) {%>
                                 <li><a href="/auth/signup">Sign Up</a></li>
                                 <li><a href="/auth/login">Log In</a></li>
                             <% } else { %>
-                                <li><a href="/auth/logout">Log Out</a></li>
                                 <li><a href="/profile">Profile</a></li>
+                                <li><a href="/profile/account">Account</a></li>
+                                <li><a href="/auth/logout">Log Out</a></li>
                             <% } %> 
-                        <% } else { %> 
-                        <% } %>  
+                       
+                         
                 </ul>
 
             </div>

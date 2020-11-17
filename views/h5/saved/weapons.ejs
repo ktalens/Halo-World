@@ -1,0 +1,73 @@
+<h2>MY WEAPONS</h2>
+
+
+<ul >
+    <%  savedItems.forEach(user=>{ %> 
+        <% if(currentUser.dataValues.id===user.id){ %>
+          <% user.weapons.forEach(savedWeap=>{ %>
+            <li class="item-wrapper"> 
+              <div class = "game-item" id="img-with-name">
+                  <img src=<%= savedWeap.smallIconImageUrl %> height="80px" >
+                  Name: <%= savedWeap.name %> 
+                  <form method="GET" action="/saved/weapons">
+                      <input type="hidden" type="text" name="id" value="<%= savedWeap.id %> ">
+                      <input type="hidden" type="text" name="id" value="<%= user.id %> ">
+                      <input type="submit" value="Remove">
+                  </form>
+              </div>
+              <div class="game-item" id="game-item-desc">
+                  <u>Type:</u> <%= savedWeap.type %> <br>
+                  <u>Description:</u> <%= savedWeap.description %> <br>
+              </div>
+            </li> <br>    
+         <% }) %> 
+        <% } %> 
+    <% }) %> 
+</ul>
+
+<!-- RESPONSE DATA
+[
+    {
+    "id": 1,
+    "gamertag": "test1",
+    "email": "test1@yahoo.com",
+    "password": "$2b$10$cljvY4Rrf5Vnoo8YXkDhXO3B6jSR1aXZqWXJ6ZmHsNJq6.rd6c7/G",
+    "createdAt": "2020-11-16T20:10:58.645Z",
+    "updatedAt": "2020-11-16T20:10:58.645Z",
+    "weapons": [
+      {
+        "id": 1,
+        "weapId": "2244200496",
+        "type": "Standard",
+        "name": "Flagnum",
+        "description": "",
+        "smallIconImageUrl": "https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d",
+        "userId": 1,
+        "createdAt": "2020-11-17T03:36:14.007Z",
+        "updatedAt": "2020-11-17T03:36:14.007Z"
+      },
+      {
+        "id": 2,
+        "weapId": "2989142719",
+        "type": "Turret",
+        "name": "SHADE AA TURRET",
+        "description": "Shade AA Turret deployable for campaign and warzone",
+        "smallIconImageUrl": "https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fshade-plasma-turret-type2-43a3e7bd5506473d8b21db5529132500.png&width=332&hash=DMp8f6sqvTQQdtdrMktKI8osrwk9VUAwO21qfUV7dtc%3d",
+        "userId": 1,
+        "createdAt": "2020-11-17T03:36:16.193Z",
+        "updatedAt": "2020-11-17T03:36:16.193Z"
+      },
+      {
+        "id": 3,
+        "weapId": "698769165",
+        "type": "Turret",
+        "name": "SHADE PLASMA TURRET",
+        "description": "Shade Plasma Turret deployable for campaign and warzone",
+        "smallIconImageUrl": "https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fshade-plasma-turret-a46b99d2048c46f18511568c722ad301.png&width=332&hash=yReKqrjSq2RAGw6N3L4r27Ch0MXbKCaAfgZ5c%2bQTg0w%3d",
+        "userId": 1,
+        "createdAt": "2020-11-17T03:36:18.449Z",
+        "updatedAt": "2020-11-17T03:36:18.449Z"
+      }
+    ]
+  }
+] -->

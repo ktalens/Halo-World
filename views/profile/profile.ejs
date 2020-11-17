@@ -1,0 +1,42 @@
+<h2> <%= currentUser.dataValues.gamertag %> 's Profile</h2>
+
+<div class="profile-container">
+    <main>
+        <div class="row">
+            <div class="column">
+                <h2>HALO 5</h2>
+                <h3>GAMEPLAY</h3><br>
+                <a href="/h5/saved/weapons">Saved Weapons</a><br>
+                <a href="/h5/saved/maps">Saved Maps</a><br>
+                <h3>PLAYER STATS</h3><br>
+                <% if(halo5){  %>
+                    <%- include('../partials/h5playerstats.ejs') %> 
+                <% } %> 
+            </div>
+            <div class="column">
+                <h2>HALO WARS 2</h2>
+                <h3>GAMEPLAY</h3><br>
+                <a href="/hw2/saved/weapons">Saved Weapons</a><br>
+                <a href="/hw2/saved/maps">Saved Maps</a><br>
+                <h3>PLAYER STATS</h3><br>
+            </div>
+            <div class="column">
+                <h2>HALO MCC</h2>
+                <h3>GAMEPLAY</h3><br>
+                <a href="/mcc/saved/strategies">Strategies</a><br>
+                <a href="/mcc/saved/maps">Saved Maps</a><br>
+                <a href="/mcc/saved/maps">Saved Maps</a><br>
+                <h3>PLAYER STATS</h3><br>
+                <% if(haloMCC){  %>
+                    <%- include('../partials/mccplayerstats.ejs') %> 
+                <% } %>   
+            </div>
+        </div>
+    </main>
+    <section>
+        <h2>My Friends</h2>
+    </section>
+</div>
+
+
+

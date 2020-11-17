@@ -1,0 +1,42 @@
+
+    <div class="stats-profile-display">
+    <h3>Summary</h3>
+    gamertag: <%= halo5.gamertag %>  <br>
+    TotalKills: <%= halo5.TotalKills %> <br> 
+    TotalDeaths: <%= halo5.TotalDeaths %> <br> 
+    TotalAssists: <%= halo5.TotalAssists %> <br>
+    TotalGamesCompleted: <%= halo5.TotalGamesCompleted %> <br>
+    TotalGamesWon: <%= halo5.TotalGamesWon %> <br>
+    TotalGamesLost: <%= halo5.TotalGamesLost %> <br>
+    TotalGamesTied: <%= halo5.TotalGamesTied %> <br> 
+              
+    <h3>Assault Stats</h3>
+    TotalHeadshots:  <%= halo5.TotalHeadshots %>  <br>
+    TotalShotsFired:  <%= halo5.TotalShotsFired %>  <br>
+    TotalShotsLanded:  <%= halo5.TotalShotsLanded %>  <br>
+    TotalMeleeKills:  <%= halo5.TotalMeleeKills %>  <br>
+    TotalAssassinations:  <%= halo5.TotalAssassinations %>  <br>
+    TotalGrenadeKills: <%= halo5.TotalGrenadeKills %>  <br>
+    TotalPowerWeaponKills:  <%= halo5.TotalPowerWeaponKills %>  <br>
+
+    <h3>Weapons</h3>
+    WeaponWithMostKills: <%= halo5.WeaponWithMostKills.WeaponId.StockId  %> <br>
+    TotalShotsFired: <%= halo5.WeaponWithMostKills.TotalShotsFired  %> <br>
+    TotalShotsLanded: <%= halo5.WeaponWithMostKills.TotalShotsLanded  %> <br>
+    TotalHeadshots: <%= halo5.WeaponWithMostKills.TotalHeadshots  %> <br>
+    TotalKills: <%= halo5.WeaponWithMostKills.TotalKills  %> <br>
+    
+    <h3>Weapon Stats</h3>
+    <ol>
+        WeaponStats: <% halo5.WeaponStats.forEach(weapon=>{  %>
+            <li>
+                ID: <%= weapon.WeaponId.StockId %> <br>
+                Fired: <%= weapon.TotalShotsFired %> <br>
+                Landed: <%= weapon.TotalShotsLanded %> <br>
+                Headshots: <%= weapon.TotalHeadshots %> <br>
+                Kills: <%= weapon.TotalKills %> <br>
+            </li>
+        <% })   %>
+    </ol>
+    
+    </div>

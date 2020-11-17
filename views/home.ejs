@@ -2,18 +2,38 @@
 
 <section>
     <h3>Quick Search:</h3>
-
-    <form>
+    <form method="POST" action="/" id="gamertagSearch">
         <label for="gamertag">Stats by Gamertag:</label>
         <input id="gamertag" name="gamertag" type="text">
+        <select id="game" name="game" form="gamertagSearch">
+            <option value="haloMCC">Halo MCC</option>
+            <option value="halo5">Halo 5</option>
+            <option value="haloW2">Halo Wars 2</option>
+        </select>
         <input type="submit" value="Go">
     </form>
-    
-    
-
-
-
-
+<%- include('partials/quickSearchResults.ejs') %> 
 </section>
-
+<main id="homepage">
+    <div class="row">
+        <div class="column">
+            <h2>Halo 5</h2>
+                
+    <a href="/h5/maps">See Maps</a><br>
+    <a href="/h5/weapons">See Weapons</a><br>
+        </div>
+        <div class="column">
+            <h2>Halo Wars 2</h2>
+            <a href="/hw2/maps">See Maps</a><br>
+            <a href="/hw2/weapons">See Weapons</a><br>
+        </div>
+        <div class="column">
+            <h2>Halo MCC</h2>
+        </div>
+    </div>
+    
+</main>
+<section>
+    <h2>Sign in to Add Friends</h2>
+</section>
 

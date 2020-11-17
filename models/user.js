@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.user.hasMany(models.weapon)
+      models.user.hasMany(models.map)
     }
   };
   user.init({

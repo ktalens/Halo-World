@@ -1,0 +1,53 @@
+<h2>HALO WARS 2: WEAPONS</h2>
+
+<form method="GET" action="/hw2/gamedata/weapons" id="weaponform">
+    <label for="weapons">Weapons:</label>
+    <select id="weapons" name="id" form="weaponform">
+        <% weaponsList.forEach(weap=>{ %> 
+            <% if(weap.isUsableByPlayer=== true){ %>
+                <option value="<%= weap.id %>"><%= weap.name %></option> 
+            <% } %> 
+        <%  }) %> 
+    </select>
+    <input type="submit" value="Go">
+</form>
+
+<ul >
+    <%  weaponsData.forEach(item=>{ %> 
+        <% if(item.isUsableByPlayer=== true){ %>
+            <li class="item-wrapper"> 
+                <div class = "game-item" id="img-with-name">
+                    <img src=<%= item.largeIconImageUrl %> height="100px" >
+                    <%= item.name %> 
+                    <form method="POST" action="/hw2/gamedata/weapons">
+                        <input type="hidden" type="text" name="userId" value="<%= currentUser.dataValues.id %>">
+                        <input type="hidden" type="text" name="gamertag" value="<%= currentUser.dataValues.gamertag %>">
+                        <input type="hidden" type="text" name="id" value="<%= item.id %>">
+                        <input type="hidden" type="text" name="type" value="<%= item.type %>">
+                        <input type="hidden" type="text" name="name" value="<%= item.name %>">
+                        <input type="hidden" type="text" name="description" value="<%= item.description %>">
+                        <input type="hidden" type="text" name="smallIconImageUrl" value="<%= item.smallIconImageUrl %>">
+                        <input type="submit" value="favorite">
+                    </form>
+                </div>
+                <div class="game-item" id="game-item-desc">
+                    <u>Type:</u> <%= item.type %> <br>
+                    <u>Description:</u> <%= item.description %> <br>
+                </div>
+            </li> <br>
+        <% } %> 
+        
+    <% }) %> 
+</ul>
+
+<!-- 
+{
+    "name": "Flagnum",
+    "description": null,
+    "type": "Standard",
+    "largeIconImageUrl": "https://content.halocdn.com/media/Default/games/halo-5-guardians/tools-of-destruction/weapons/flagnum-282503fb5260409a844e29eeae45bbca.png",
+    "smallIconImageUrl": "https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d",
+    "isUsableByPlayer": true,
+    "id": "2244200496",
+    "contentId": "cc556937-465f-4286-a989-e4ac28e6988b"
+  }, -->

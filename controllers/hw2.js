@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
-const halo5Url = 'https://www.haloapi.com/metadata/h5/metadata/'
+const haloW2Url = 'https://www.haloapi.com/metadata/hw2/metadata/'
 const axios = require('axios')
 
 let player= 'VERYCEREBRAL'
 
 //  GET WEAPONS INDEX
-router.get('/weapons',(req,res)=>{  
-    axios.get(`${halo5Url}weapons?`, {headers: {
+router.get('/gamedata/weapons',(req,res)=>{  
+    axios.get(`${haloW2Url}weapons?`, {headers: {
         'Accept-Language': 'en',
         'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
     }} )
@@ -19,9 +19,9 @@ router.get('/weapons',(req,res)=>{
             const filteredWeaps=allWeaps.filter(selectedWeap=>{
                 return selectedWeap.id===weaponFinder
             })
-            res.render('h5/weapons',{weaponsData: filteredWeaps, weaponsList:allWeaps})
+            res.render('hw2/gamedata/weapons',{weaponsData: filteredWeaps, weaponsList:allWeaps})
         } else {
-            res.render('h5/weapons',{weaponsData: allWeaps, weaponsList: allWeaps})
+            res.render('hw2/gamedata/weapons',{weaponsData: allWeaps, weaponsList: allWeaps})
         }
     })
     .catch(err=>{
@@ -30,7 +30,7 @@ router.get('/weapons',(req,res)=>{
 })
 
 //POST SAVED WEAPONS
-router.post('/weapons',(req,res)=>{
+router.post('/gamedata/weapons',(req,res)=>{
     let faved = req.body
     db.user.findOne({
         where: {id: faved.userId}
@@ -52,21 +52,21 @@ router.post('/weapons',(req,res)=>{
         .then(([foundItem,createdItem])=>{
             if(foundItem){
                 req.flash(`${foundItem.name} is already in your saved items`)
-                res.redirect('/h5/weapons')
+                res.redirect('/hw2/gamedata/weapons')
             } else if(createdItem){
                 foundUser.addWeapon(weapon)
                 req.flash(`${foundItem.name} was successfully added to your saved items`)
-                res.redirect('/h5/weapons')
+                res.redirect('/hw2/gamedata/weapons')
             }
         })
         .catch(err=>{
             req.flash('error', err.message)
-            res.redirect('/h5/weapons')
+            res.redirect('/hw2/gamedata/weapons')
         })
     })
     .catch(err=>{
         req.flash('error', err.message)
-        res.redirect('/h5/weapons')
+        res.redirect('/hw2/gamedata/weapons')
     })
 })
 
@@ -77,7 +77,7 @@ router.get('/saved/weapons',(req,res)=>{
         include: [db.weapon]
     })
     .then(savedWeapons=>{
-        res.render('h5/saved/weapons', {savedItems: savedWeapons})
+        res.render('hw2/saved/weapons', {savedItems: savedWeapons})
     })
     .catch(err=>{
         console.log(err)
@@ -86,8 +86,8 @@ router.get('/saved/weapons',(req,res)=>{
 
 
 // GET MAPS INDEX
-router.get('/maps',(req,res)=>{
-    axios.get(`${halo5Url}maps?`, {headers: {
+router.get('/gamedata/maps',(req,res)=>{
+    axios.get(`${haloW2Url}maps?`, {headers: {
         'Accept-Language': 'en',
         'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
     }} )
@@ -98,9 +98,9 @@ router.get('/maps',(req,res)=>{
             const filteredMaps = allMaps.filter(selectedMap=>{
                 return selectedMap.id === mapsFinder
             })
-            res.render('h5/maps', {mapsData: filteredMaps, mapsList:allMaps})
+            res.render('hw2/gamedata/maps', {mapsData: filteredMaps, mapsList:allMaps})
         } else {
-            res.render('h5/maps', {mapsData: allMaps, mapsList: allMaps})
+            res.render('hw2/gamedata/maps', {mapsData: allMaps, mapsList: allMaps})
         }
     })
     .catch(err=>{
@@ -109,7 +109,7 @@ router.get('/maps',(req,res)=>{
 })
 
 //POST SAVED MAPS
-router.post('/maps',(req,res)=>{
+router.post('/gamedata/maps',(req,res)=>{
     let faved = req.body
     db.user.findOne({
         where: {id: faved.userId}
@@ -131,21 +131,21 @@ router.post('/maps',(req,res)=>{
         .then(([foundItem,createdItem])=>{
             if(foundItem){
                 req.flash(`${foundItem.name} is already in your saved items`)
-                res.redirect('/h5/maps')
+                res.redirect('/hw2/gamedata/maps')
             } else if(createdItem){
                 foundUser.addmap(map)
                 req.flash(`${foundItem.name} was successfully added to your saved items`)
-                res.redirect('/h5/maps')
+                res.redirect('/hw2/gamedata/maps')
             }
         })
         .catch(err=>{
             req.flash('error', err.message)
-            res.redirect('/h5/maps')
+            res.redirect('/hw2/gamedata/maps')
         })
     })
     .catch(err=>{
         req.flash('error', err.message)
-        res.redirect('/h5/maps')
+        res.redirect('/hw2/gamedata/maps')
     })
 })
 
@@ -156,53 +156,27 @@ router.get('/saved/maps',(req,res)=>{
         include: [db.map]
     })
     .then(savedmaps=>{
-        res.render('h5/saved/maps', {savedItems: savedmaps})
+        res.render('hw2/saved/maps', {savedItems: savedmaps})
     })
     .catch(err=>{
         console.log(err)
       })
 })
 
-// GET GAME MODES
-router.get('/gameBaseVariants',(req,res)=>{
-    axios.get(`${halo5Url}game-base-variants`, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        //res.send(response.data)
-        res.render('h5/gbvariants',{gbvData: response.data})
-    })
-    .catch(err=>{
-        res.send(err)
-    })
-})
-
-//GET MAP VARIANTS BY ID
-router.get('/variants/:idx',(req,res)=>{
-    axios.get(`${halo5Url}map-variants/${req.params.idx}`, {headers: {
-        'Accept-Language': 'en',
-        'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
-    }} )
-    .then(response=>{
-        res.send(response.data)
-    }
-    )
-})
 
 // GET PLAYER DATA
 router.get('/stats',(req,res)=>{
 
-    let h5StatsUrl = `https://www.haloapi.com/stats/h5/players/${player}/matches`
-    //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/appearance`
-    //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/spartan`
-    axios.get(h5StatsUrl, {headers: {
+    let hw2StatsUrl = `https://www.haloapi.com/stats/hw2/players/${player}/matches`
+    //let haloUrl = `https://www.haloapi.com/profile/hw2/profiles/${player}/appearance`
+    //let haloUrl = `https://www.haloapi.com/profile/hw2/profiles/${player}/spartan`
+    axios.get(hw2StatsUrl, {headers: {
         'Accept-Language': 'en',
         'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
     }} )
     .then(response=>{
         //res.send(response.data.Results)
-        res.render('h5/stats',{matchData: response.data.Results})
+        res.render('hw2/stats',{matchData: response.data.Results})
     })
     .catch(err=>{
         res.send(err)

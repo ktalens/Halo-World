@@ -41,8 +41,10 @@ sequelize db:create halo_world_dev
 sequelize model:create --name user --attributes gamertag:string,email:string,password:string
 ```
 ```
+sequelize model:create --name weapon --attributes weapId:bigint,type:string,name:string,description:text,smallIconImageUrl:text,userId:integer
 ```
-sequelize model:create --name weapon --attributes id:integer,type:string,name:string,description:text,smallIconImageUrl:string
+```
+sequelize model:create --name map --attributes mapId:string,type:string,name:string,description:text,smallIconImageUrl:text,userId:integer
 ```
 
 5. Migrate the `user` model to your database

@@ -1,0 +1,25 @@
+<h2>MY MAPS</h2>
+
+
+<ul >
+    <%  savedItems.forEach(user=>{ %> 
+        <% if(currentUser.dataValues.id===user.id){ %>
+          <% user.maps.forEach(savedMap=>{ %>
+            <li class="item-wrapper"> 
+              <div class = "game-item" id="img-with-name">
+                  <img src=<%= savedMap.imageUrl %> height="80px" >
+                  Name: <%= savedMap.name %> 
+                  <form method="GET" action="/saved/maps">
+                      <input type="hidden" type="text" name="id" value="<%= savedMap.id %> ">
+                      <input type="hidden" type="text" name="id" value="<%= user.id %> ">
+                      <input type="submit" value="Remove">
+                  </form>
+              </div>
+              <div class="game-item" id="game-item-desc">
+                  <u>Description:</u> <%= savedMap.description %> <br>
+              </div>
+            </li> <br>    
+         <% }) %> 
+        <% } %> 
+    <% }) %> 
+</ul>
