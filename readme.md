@@ -35,9 +35,14 @@ npm i
 
 4. Create a database
 ```
-sequelize db:create users
-``````
-sequelize db:create users
+sequelize db:create halo_world_dev
+```
+```
+sequelize model:create --name user --attributes gamertag:string,email:string,password:string
+```
+```
+```
+sequelize model:create --name weapon --attributes id:integer,type:string,name:string,description:text,smallIconImageUrl:string
 ```
 
 5. Migrate the `user` model to your database

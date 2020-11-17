@@ -1,0 +1,26 @@
+<h2>MY WEAPONS</h2>
+
+
+<ul >
+    <%  savedItems.forEach(item=>{ %> 
+        <% if(user.id===req.dataValues.id)){ %>
+            <% } %> 
+            <li class="item-wrapper"> 
+                <div class = "game-item" id="img-with-name">
+                    <img src=<%= item.smallIconImageUrl %> height="80px" >
+                    Name: <%= item.name %> 
+                    <form method="GET" action="/saved/weapons">
+                        <input type="hidden" type="text" name="id" value="<%= item.id %> ">
+                        <input type="hidden" type="text" name="id" value="<%= item.user.id %> ">
+                        <input type="submit" value="Remove">
+                    </form>
+                </div>
+                <div class="game-item" id="game-item-desc">
+                    <u>Type:</u> <%= item.type %> <br>
+                    <u>Description:</u> <%= item.description %> <br>
+                </div>
+            </li> <br>
+        
+        
+    <% }) %> 
+</ul>

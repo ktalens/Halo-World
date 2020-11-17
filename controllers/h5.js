@@ -29,6 +29,70 @@ router.get('/weapons',(req,res)=>{
     })
 })
 
+//POST SAVED WEAPONS
+router.post('/weapons',(req,res)=>{
+    let faved = req.body
+    db.user.findOne({
+        where: {id: faved.userId}
+    })
+    .then(foundUser=>{
+        db.weapon.findOrCreate({
+            where: {
+                weapId: parseInt(faved.id),
+                name: faved.name,
+                type: faved.type,
+                description: faved.description,
+                smallIconImageUrl: faved.smallIconImageUrl,
+                userId: faved.userId
+            },
+            defaults: {
+                
+            }
+        })
+        .then(([foundItem,createdItem])=>{
+            
+            if(foundItem){
+                req.flash(`${foundItem.name} is already in your saved items`)
+                res.redirect('/h5/weapons')
+                
+            } else if(createdItem){
+                foundUser.addWeapon(weapon)
+                req.flash(`${foundItem.name} was successfully added to your saved items`)
+                res.redirect('/h5/weapons')
+                
+            }
+        })
+        .catch(err=>{
+            req.flash('error', err.message)
+            res.redirect('/h5/weapons')
+        })
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+        res.redirect('/h5/weapons')
+    })
+    
+})
+
+// GET SAVED WEAPONS 
+router.get('/saved/weapons',(req,res)=>{
+    db.user.findAll(
+    {
+        include: [db.weapon]
+    })
+    .then(foundItems=>{
+        res.send(foundItems)
+    })
+    // db.weapon.findAll()
+    // .then(savedWeapons=>{
+    //     res.render('h5/saved/weapons', {savedItems: savedWeapons})
+    // })
+    .catch(err=>{
+        console.log(err)
+      })
+})
+
+
 // GET MAPS INDEX
 router.get('/maps',(req,res)=>{
     axios.get(`${halo5Url}maps?`, {headers: {

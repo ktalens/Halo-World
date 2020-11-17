@@ -4,7 +4,9 @@
     <label for="weapons">Weapons:</label>
     <select id="weapons" name="id" form="weaponform">
         <% weaponsList.forEach(weap=>{ %> 
-           <option value="<%= weap.id %>"><%= weap.name %></option> 
+            <% if(weap.isUsableByPlayer=== true){ %>
+                <option value="<%= weap.id %>"><%= weap.name %></option> 
+            <% } %> 
         <%  }) %> 
     </select>
     <input type="submit" value="Go">
@@ -12,21 +14,28 @@
 
 <ul >
     <%  weaponsData.forEach(item=>{ %> 
-        
-        <li class="item-wrapper"> 
-            <div class = "game-item" id="img-with-name">
-                <img src=<%= item.largeIconImageUrl %> height="100px" >
-                <%= item.name %> 
-                <form>
-                    <input type="submit" value="favorite">
-                </form>
-            </div>
-            <div class="game-item" id="game-item-desc">
-                <u>Type:</u> <%= item.type %> <br>
-                <u>Description:</u> <%= item.description %> <br>
-            </div>
+        <% if(item.isUsableByPlayer=== true){ %>
+            <li class="item-wrapper"> 
+                <div class = "game-item" id="img-with-name">
+                    <img src=<%= item.largeIconImageUrl %> height="100px" >
+                    <%= item.name %> 
+                    <form method="POST" action="/h5/weapons">
+                        <input type="hidden" type="text" name="userId" value="<%= currentUser.dataValues.id %>">
+                        <input type="hidden" type="text" name="gamertag" value="<%= currentUser.dataValues.gamertag %>">
+                        <input type="hidden" type="text" name="id" value="<%= item.id %>">
+                        <input type="hidden" type="text" name="type" value="<%= item.type %>">
+                        <input type="hidden" type="text" name="name" value="<%= item.name %>">
+                        <input type="hidden" type="text" name="description" value="<%= item.description %>">
+                        <input type="hidden" type="text" name="smallIconImageUrl" value="<%= item.smallIconImageUrl %>">
+                        <input type="submit" value="favorite">
+                    </form>
+                </div>
+                <div class="game-item" id="game-item-desc">
+                    <u>Type:</u> <%= item.type %> <br>
+                    <u>Description:</u> <%= item.description %> <br>
+                </div>
             </li> <br>
-
+        <% } %> 
         
     <% }) %> 
 </ul>
