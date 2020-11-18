@@ -46,8 +46,18 @@ sequelize model:create --name weapon --attributes weapId:bigint,type:string,name
 ```
 sequelize model:create --name map --attributes mapId:string,type:string,name:string,description:text,smallIconImageUrl:text,userId:integer
 ```
+```
+sequelize model:create --name strategy --attributes description:text,mapId:string,weapId:bigint,userId:integer
+```
+```
+sequelize model:create --name weapStrategy --attributes mapId:bigint,strategyId:integer
+```
 
-5. Migrate the `user` model to your database
+```
+sequelize model:create --name mapStrategy --attributes mapId:string,strategyId:integer
+```
+
+5. Migrate the `halo_world` model to your database
 ```
 sequelize db:migrate
 ```

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.weapon.belongsTo(models.user)
+      models.weapon.belongsToMany(models.strategy, {through: 'weapStrategy'})
     }
   };
   weapon.init({

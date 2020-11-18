@@ -7,6 +7,9 @@ const passport= require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn.js')
 const axios = require('axios')
+const methodOverride= require('method-override');
+
+app.use(methodOverride('_method'))
 
 
 app.set('view engine', 'ejs')

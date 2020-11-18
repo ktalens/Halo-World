@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../models')
 const haloW2Url = 'https://www.haloapi.com/metadata/hw2/metadata/'
 const axios = require('axios')
+const methodOverride= require('method-override')
 
 
 
@@ -84,6 +85,9 @@ router.get('/saved/weapons',(req,res)=>{
       })
 })
 
+/
+
+
 
 // GET MAPS INDEX
 router.get('/gamedata/maps',(req,res)=>{
@@ -163,6 +167,20 @@ router.get('/saved/maps',(req,res)=>{
       })
 })
 
+// GET SAVED STRATEGIES
+router.get('/stategy',isLoggedIn,(req,res)=>{
+    let userId= res.locals.currentUser.id
+    db.user.findByPk(userId,
+        {
+            include: [db.strategy]
+        })
+        .then(entries=>{
+            res.render('mcc/strategy', {savedItems: entries})
+        })
+        .catch(err=>{
+            console.log(err)
+          })
+})
 
 // GET PLAYER DATA
 router.get('/stats',(req,res)=>{

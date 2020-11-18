@@ -46,4 +46,20 @@ router.get('/hist',isLoggedIn,(req,res)=>{
     })
 })
 
+// GET SAVED STRATEGIES
+router.get('/strategy',isLoggedIn,(req,res)=>{
+    res.render('mcc/strategy')
+    // let userId= res.locals.currentUser.id
+    // db.user.findByPk(userId,
+    //     {
+    //         include: [db.strategy]
+    //     })
+    //     .then(entries=>{
+    //         res.render('h5/saved/strategy', {savedItems: entries})
+    //     })
+    //     .catch(err=>{
+    //         console.log(err)
+    //       })
+})
+
 module.exports = router

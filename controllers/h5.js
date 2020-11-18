@@ -4,6 +4,9 @@ const db = require('../models')
 const halo5Url = 'https://www.haloapi.com/metadata/h5/metadata/'
 const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn.js')
+const methodOverride= require('method-override');
+
+router.use(methodOverride('_method'))
 
 router.use(express.urlencoded({extended: false}))
 
@@ -93,6 +96,26 @@ router.get('/saved/weapons',isLoggedIn,(req,res)=>{
       })
 })
 
+// DELETE SAVED WEAPONS 
+router.delete('/saved/weapons/:idx',(req,res)=>{
+
+    // let userId= res.locals.currentUser.id
+    console.log(req.body)
+    //res.send(req.body)
+    db.weapon.destroy({
+        where: {weapId: req.body.weapId,
+        userId: req.body.userId}
+    })
+    .then(deletedItems=>{
+        console.log('deleted: ',deletedItems)
+        res.redirect('/h5/saved/weapons')
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
+})
+
+
 
 // GET MAPS INDEX
 router.get('/maps',(req,res)=>{
@@ -158,6 +181,8 @@ router.post('/maps',isLoggedIn,(req,res)=>{
     })
 })
 
+
+
 // GET SAVED mapS 
 router.get('/saved/maps',isLoggedIn,(req,res)=>{
     db.user.findAll(
@@ -172,8 +197,23 @@ router.get('/saved/maps',isLoggedIn,(req,res)=>{
       })
 })
 
+// DELETE SAVED MAPS 
+router.delete('/saved/maps/:idx',(req,res)=>{
+    db.map.destroy({
+        where: {mapId: req.body.mapId,
+        userId: req.body.userId}
+    })
+    .then(deletedItems=>{
+        console.log('deleted: ',deletedItems)
+        res.redirect('/h5/saved/maps')
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
+})
+
 // GET GAME MODES
-router.get('/gameBaseVariants',(req,res)=>{
+router.get('/gameBaseVariants',isLoggedIn,(req,res)=>{
     axios.get(`${halo5Url}game-base-variants`, {headers: {
         'Accept-Language': 'en',
         'Ocp-Apim-Subscription-Key': `${process.env.API_KEY}`
@@ -188,10 +228,26 @@ router.get('/gameBaseVariants',(req,res)=>{
 })
 
 
+// GET SAVED STRATEGIES
+router.get('/saved/strategy',isLoggedIn,(req,res)=>{
+    res.render('h5/saved/strategy')
+    // let userId= res.locals.currentUser.id
+    // db.user.findByPk(userId,
+    //     {
+    //         include: [db.strategy]
+    //     })
+    //     .then(entries=>{
+    //         res.render('h5/saved/strategy', {savedItems: entries})
+    //     })
+    //     .catch(err=>{
+    //         console.log(err)
+    //       })
+})
+
+
 
 // GET PLAYER DATA
 router.get('/stats',isLoggedIn,(req,res)=>{
-    let player= res.locals.currentUser.gamertag
     let h5StatsUrl = `https://www.haloapi.com/stats/h5/players/${player}/matches`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/appearance`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/spartan`

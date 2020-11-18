@@ -1,0 +1,19 @@
+<h2>HALO 5: GAME STRATEGIES</h2>
+
+<form method="PUT" action="/saved/strategy">
+<label for="description">Enter a strategy: </label>
+<input type="text" name="description" id="description">
+<input type="hidden" type="text" name="userId" value="<% if(currentUser){  %>
+    <%= currentUser.dataValues.id %>
+<% }else{ %> 
+    <%= 'test1' %>
+<% } %>
+">
+<input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %>
+    <%= currentUser.dataValues.gamertag %>
+<% }else{ %> 
+    <%= 'VeryCerebral' %>
+<% } %>
+">
+<input type="submit">
+</form>
