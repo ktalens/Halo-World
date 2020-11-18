@@ -229,25 +229,93 @@ router.get('/gameBaseVariants',isLoggedIn,(req,res)=>{
 
 
 // GET SAVED STRATEGIES
-router.get('/saved/strategy',isLoggedIn,(req,res)=>{
-    res.render('h5/saved/strategy')
-    // let userId= res.locals.currentUser.id
-    // db.user.findByPk(userId,
-    //     {
-    //         include: [db.strategy]
-    //     })
-    //     .then(entries=>{
-    //         res.render('h5/saved/strategy', {savedItems: entries})
-    //     })
-    //     .catch(err=>{
-    //         console.log(err)
-    //       })
+router.get('/saved/strategies/',isLoggedIn,(req,res)=>{
+    //res.render('h5/saved/strategies/strategy')
+    let userInfo= res.locals.currentUser.id
+    db.user.findOne({
+        where: {id: userInfo}
+        },
+        {
+            include: [db.strategy]
+        })
+    .then(foundUser=>{
+            //res.render('h5/saved/strategies/strategy', {savedItems: foundUser.strategies})
+        console.log(foundUser.strategies)
+        res.render('h5/saved/strategies/strategy')
+    })
+        .catch(err=>{
+            req.flash('error', err.message)
+        })
+})
+
+// POST NEW ENTRY FOR STRATEGIES
+router.post('/saved/strategies/',(req,res)=>{
+    let userInfo= res.locals.currentUser.id
+    db.user.findOne({
+        where: {
+            id: userInfo
+        }
+    })
+    .then(foundUser=>{
+        console.log(foundUser)
+        db.strategy.findOrCreate({
+            where: {
+                description: req.body.description,
+                mapId: req.body.mapChoice,
+                weapID: req.body.weapChoice,
+                userId: userInfo
+            },
+            defaults: {
+                gameId: 5
+                //FOR HALO 5
+            }
+        })
+        .then(([entry,created])=>{
+            console.log(entry, created)
+            // foundUser.addStrategy(entry)
+            // res.redirect('/h5/saved/strategies/')
+        })
+        .catch(err=>{
+            req.flash('error', err.message)
+        })
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
+    
+})
+
+
+// CREATE ENTRY FOR STRATEGIES
+router.get('/saved/strategies/new',isLoggedIn,(req,res)=>{
+    let userInfo= res.locals.currentUser.id
+    db.weapon.findAll({
+        where: {userId: userInfo}
+    })
+    .then(foundWeapons=>{
+        db.map.findAll({
+            where: {userId: userInfo}
+        })
+        .then(foundMaps=>{
+            res.render('h5/saved/strategies/newEntry',{
+                savedWeaps: foundWeapons,
+                savedMaps: foundMaps
+            })
+        })
+        .catch(err=>{
+            req.flash('error', err.message)
+        })
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
 })
 
 
 
 // GET PLAYER DATA
 router.get('/stats',isLoggedIn,(req,res)=>{
+    let player= res.locals.currentUser.gamertag
     let h5StatsUrl = `https://www.haloapi.com/stats/h5/players/${player}/matches`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/appearance`
     //let haloUrl = `https://www.haloapi.com/profile/h5/profiles/${player}/spartan`

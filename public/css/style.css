@@ -210,3 +210,8 @@ a:visited{
 .auth-form{
    background: rgb(177, 196, 196);
 }
+
+.enter-strategy{
+   width: 60%;
+   height: 200px;
+}

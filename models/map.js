@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.map.belongsTo(models.user)
-      models.map.belongsToMany(models.strategy, {through: 'mapStrategy'})
+      models.map.hasMany(models.strategy)
     }
   };
   map.init({

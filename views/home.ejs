@@ -20,12 +20,14 @@
             <h2>Halo 5</h2>
             <a href="/h5/maps">See Maps</a><br>
             <a href="/h5/weapons">See Weapons</a><br>
+            <a href="/h5/saved/strategies/new">Add a Strategy</a><br>
+            <li><a href="/h5/saved/strategies/">My Game</a></li><br> 
             <% if (currentUser) {%>
-                <li><a href="#">My Game</a></li><br> 
+                
                 <li><a href="/h5/saved/weapons">My Weapons</a></li><br> 
                 <li><a href="/h5/saved/maps">My Maps</a></li><br> 
             <% } else { %>
-                <%= 'Sign-in or Create an Account to Save Game Info!' %>
+                <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info! 
            <% } %>
         </div>
         <div class="column">
@@ -33,7 +35,8 @@
             <% if (currentUser) {%>
                 <li><a href="#">My Game</a></li><br>
             <% } else { %>
-                <%= 'Sign-in or Create an Account to Save Game Info!' %>
+
+                <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info! 
            <% } %>
 
         </div>
