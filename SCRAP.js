@@ -6142,3 +6142,107 @@
     ],
     "TotalSpartanKills": 46219,
     "FastestMatchWin": null
+
+
+
+[
+  weapon {
+    dataValues: {
+      id: 4,
+      weapId: '2244200496',
+      type: 'Standard',
+      name: 'Flagnum',
+      description: '',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:04.857Z,
+      updatedAt: 2020-11-18T00:33:04.857Z
+    },
+    _previousDataValues: {
+      id: 4,
+      weapId: '2244200496',
+      type: 'Standard',
+      name: 'Flagnum',
+      description: '',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:04.857Z,
+      updatedAt: 2020-11-18T00:33:04.857Z
+    },
+    _changed: Set(0) {},
+    _options: {
+      isNewRecord: false,
+      _schema: null,
+      _schemaDelimiter: '',
+      raw: true,
+      attributes: [Array]
+    },
+    isNewRecord: false
+  },
+  weapon {
+    dataValues: {
+      id: 5,
+      weapId: '2511447508',
+      type: 'Standard',
+      name: 'LightRifle',
+      description: 'Accurate and powerful, LightRifles were the standard-issue weapon of ancient Promethean warriors.',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2flight-rifle-0c9fc99241fc414a85d6e210fed36d04.png&width=332&hash=tIJEZDRfA5lPq2QmM6Ql66UCCyNFECIxJXWqlSFDJLE%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:13.826Z,
+      updatedAt: 2020-11-18T00:33:13.826Z
+    },
+    _previousDataValues: {
+      id: 5,
+      weapId: '2511447508',
+      type: 'Standard',
+      name: 'LightRifle',
+      description: 'Accurate and powerful, LightRifles were the standard-issue weapon of ancient Promethean warriors.',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2flight-rifle-0c9fc99241fc414a85d6e210fed36d04.png&width=332&hash=tIJEZDRfA5lPq2QmM6Ql66UCCyNFECIxJXWqlSFDJLE%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:13.826Z,
+      updatedAt: 2020-11-18T00:33:13.826Z
+    },
+    _changed: Set(0) {},
+    _options: {
+      isNewRecord: false,
+      _schema: null,
+      _schemaDelimiter: '',
+      raw: true,
+      attributes: [Array]
+    },
+    isNewRecord: false
+  },
+  weapon {
+    dataValues: {
+      id: 6,
+      weapId: '2050745863',
+      type: 'Power',
+      name: 'Needler',
+      description: 'Exotic weapon which fires shards that home in on short-range targets. If multiple shards strike a target they will detonate - creating a "supercombine" explosion. Will bounce off heavy armor, such as that used by vehicles and Hunters.',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fneedler-5690d414b19a4b2d83be15baaffa2fe9.png&width=332&hash=N00LDPlPB5dg3BgRm%2fDef2bQs8MR0c4DJsEeAtIR5ck%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:23.768Z,
+      updatedAt: 2020-11-18T00:33:23.768Z
+    },
+    _previousDataValues: {
+      id: 6,
+      weapId: '2050745863',
+      type: 'Power',
+      name: 'Needler',
+      description: 'Exotic weapon which fires shards that home in on short-range targets. If multiple shards strike a target they will detonate - creating a "supercombine" explosion. Will bounce off heavy armor, such as that used by vehicles and Hunters.',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fneedler-5690d414b19a4b2d83be15baaffa2fe9.png&width=332&hash=N00LDPlPB5dg3BgRm%2fDef2bQs8MR0c4DJsEeAtIR5ck%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:23.768Z,
+      updatedAt: 2020-11-18T00:33:23.768Z
+    },
+    _changed: Set(0) {},
+    _options: {
+      isNewRecord: false,
+      _schema: null,
+      _schemaDelimiter: '',
+      raw: true,
+      attributes: [Array]
+    },
+    isNewRecord: false
+  }
+]

@@ -257,8 +257,8 @@ router.post('/saved/strategies/',(req,res)=>{
         }
     })
     .then(foundUser=>{
-        console.log(foundUser)
-        db.strategy.findOrCreate({
+        //console.log(foundUser)
+        db.strategy.create({
             where: {
                 description: req.body.description,
                 mapId: req.body.mapChoice,
@@ -271,7 +271,7 @@ router.post('/saved/strategies/',(req,res)=>{
             }
         })
         .then(([entry,created])=>{
-            console.log(entry, created)
+            console.log('========> HERE', entry, created)
             // foundUser.addStrategy(entry)
             // res.redirect('/h5/saved/strategies/')
         })
