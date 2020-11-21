@@ -10,7 +10,7 @@
                   <img src=<%= savedMap.imageUrl %> height="80px" >
                   Name: <%= savedMap.name %> 
                 <form method="POST" action="/h5/saved/maps/<%= savedMap.id  %>/?_method=DELETE ">
-                      <input type="hidden" type="text" name="mapId" value="<%= savedMap.mapId %> ">
+                      <input type="hidden" type="text" name="mapId" value="<%= savedMap.id %> ">
                       <input type="hidden" type="text" name="userId" value="<%= user.id %> ">
                       <input type="submit" value="Remove">
                   </form>

@@ -11,8 +11,8 @@
                   Name: <%= savedWeap.name %> 
                   <!-- <form method="GET" action="/saved/weapons"> -->
                   <form method="POST" action="/h5/saved/weapons/<%= savedWeap.id  %>/?_method=DELETE ">
-                      <input type="hidden" type="text" name="weapId" value="<%= savedWeap.weapId %> ">
-                      <input type="hidden" type="text" name="userId" value="<%= user.id %> ">
+                      <input type="hidden" type="text" name="weapId" value="<%= savedWeap.id %>">
+                      <input type="hidden" type="text" name="userId" value="<%= user.id %>">
                       <input type="submit" value="Remove">
                   </form>
               </div>

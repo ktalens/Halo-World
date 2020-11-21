@@ -1,6 +1,6 @@
 <h2>HALO 5: NEW STRATEGY</h2>
 
-<form method="POST" action="/h5/saved/strategies/" id="strategy-form">
+<form method="POST" action="/h5/saved/strategies/new" id="strategy-form">
 
     <label for="weapChoice">Use with: </label>
     <select id="weapChoice" name="weapChoice" form="strategy-form">
@@ -18,18 +18,8 @@
 
     <label for="description">Enter a strategy: </label><br>
     <textarea class="enter-strategy" type="text" name="description" id="description"></textarea>
-    <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %>
-        <%= currentUser.dataValues.id %>
-    <% }else{ %> 
-        <%= 'test1' %>
-    <% } %>
-    ">
-    <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %>
-        <%= currentUser.dataValues.gamertag %>
-    <% }else{ %> 
-        <%= 'VeryCerebral' %>
-    <% } %>
-    ">
+    <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
+    <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
     <br>
     <input type="submit">
 </form>

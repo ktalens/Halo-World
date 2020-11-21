@@ -1,3 +1,18 @@
 <h2>HALO 5: GAME STRATEGIES</h2>
 
 <a href="/h5/saved/strategies/new">Add a Strategy</a>
+<ul >
+    <%  savedItems.forEach(item=>{ %> 
+        <li class="item-wrapper"> 
+            <div class = "game-item" id="img-with-name">
+                <button><a href="/h5/saved/strategies/edit/<%= item.id  %>">Edit</a></button>
+                <form method="POST" action="/h5/saved/strategies/<%= item.id  %>/?_method=DELETE ">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+            <div class="game-item" id="game-item-desc">
+                <%= item.description %>
+            </div>
+            </li> <br>    
+    <% }) %>
+</ul>

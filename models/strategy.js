@@ -12,15 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.strategy.belongsTo(models.user)
-      models.strategy.belongsTo(models.map)
-      models.strategy.belongsTo(models.weapon)
+      models.strategy.belongsToMany(models.map, {through: 'mapStrategy'})
+      models.strategy.belongsToMany(models.weapon, {through: 'weaponStrategy'})
     }
   };
   strategy.init({
     description: DataTypes.TEXT,
     gameId: DataTypes.INTEGER,
-    mapId: DataTypes.STRING,
-    weapId: DataTypes.BIGINT,
     userId: DataTypes.INTEGER
   }, {
     sequelize,

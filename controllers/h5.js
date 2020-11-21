@@ -50,7 +50,7 @@ router.post('/weapons',isLoggedIn,(req,res)=>{
     .then(foundUser=>{
         db.weapon.findOrCreate({
             where: {
-                weapId: parseInt(faved.id),
+                weaponId: parseInt(faved.weaponId),
                 name: faved.name,
                 type: faved.type,
                 description: faved.description,
@@ -98,12 +98,9 @@ router.get('/saved/weapons',isLoggedIn,(req,res)=>{
 
 // DELETE SAVED WEAPONS 
 router.delete('/saved/weapons/:idx',(req,res)=>{
-
-    // let userId= res.locals.currentUser.id
-    console.log(req.body)
-    //res.send(req.body)
+    let userId= res.locals.currentUser.id
     db.weapon.destroy({
-        where: {weapId: req.body.weapId,
+        where: {id: req.body.weapId,
         userId: req.body.userId}
     })
     .then(deletedItems=>{
@@ -149,7 +146,7 @@ router.post('/maps',isLoggedIn,(req,res)=>{
     .then(foundUser=>{
         db.map.findOrCreate({
             where: {
-                mapId: faved.id,
+                mapId: faved.mapId,
                 name: faved.name,
                 type: faved.type,
                 description: faved.description,
@@ -200,7 +197,7 @@ router.get('/saved/maps',isLoggedIn,(req,res)=>{
 // DELETE SAVED MAPS 
 router.delete('/saved/maps/:idx',(req,res)=>{
     db.map.destroy({
-        where: {mapId: req.body.mapId,
+        where: {id: req.body.mapId,
         userId: req.body.userId}
     })
     .then(deletedItems=>{
@@ -232,48 +229,13 @@ router.get('/gameBaseVariants',isLoggedIn,(req,res)=>{
 router.get('/saved/strategies/',isLoggedIn,(req,res)=>{
     //res.render('h5/saved/strategies/strategy')
     let userInfo= res.locals.currentUser.id
-    db.user.findOne({
-        where: {id: userInfo}
-        },
-        {
-            include: [db.strategy]
-        })
-    .then(foundUser=>{
-            //res.render('h5/saved/strategies/strategy', {savedItems: foundUser.strategies})
-        console.log(foundUser.strategies)
-        res.render('h5/saved/strategies/strategy')
-    })
-        .catch(err=>{
-            req.flash('error', err.message)
-        })
-})
-
-// POST NEW ENTRY FOR STRATEGIES
-router.post('/saved/strategies/',(req,res)=>{
-    let userInfo= res.locals.currentUser.id
-    db.user.findOne({
-        where: {
-            id: userInfo
-        }
+    db.user.findOne(
+        {where: {id: userInfo}
     })
     .then(foundUser=>{
-        //console.log(foundUser)
-        db.strategy.create({
-            where: {
-                description: req.body.description,
-                mapId: req.body.mapChoice,
-                weapID: req.body.weapChoice,
-                userId: userInfo
-            },
-            defaults: {
-                gameId: 5
-                //FOR HALO 5
-            }
-        })
-        .then(([entry,created])=>{
-            console.log('========> HERE', entry, created)
-            // foundUser.addStrategy(entry)
-            // res.redirect('/h5/saved/strategies/')
+        foundUser.getStrategies()
+        .then(foundStrategies=>{
+            res.render('h5/saved/strategies/strategy', {savedItems: foundStrategies})
         })
         .catch(err=>{
             req.flash('error', err.message)
@@ -282,11 +244,53 @@ router.post('/saved/strategies/',(req,res)=>{
     .catch(err=>{
         req.flash('error', err.message)
     })
-    
+})
+
+// POST NEW ENTRY FOR STRATEGIES
+router.post('/saved/strategies/new',(req,res)=>{
+    let userInfo= res.locals.currentUser.id
+    db.strategy.findOrCreate({
+        where: {
+            description: req.body.description,
+            userId: userInfo
+        },
+        defaults: {gameId: 5}   //<-- FOR HALO 5
+    })
+    .then(([entry,created])=>{
+        db.weapon.findOne({
+            where: {
+                userId: userInfo,
+                id: req.body.weapChoice
+            }
+        })
+        .then(foundWeapon=>{
+            entry.addWeapons(foundWeapon)
+            db.map.findOne({
+                where: {
+                    userId: userInfo,
+                    id: req.body.mapChoice
+                }
+            })
+            .then(foundMap=>{
+                entry.addMaps(foundMap)
+                res.redirect('../strategies/')
+            })
+            .catch(err=>{
+                console.log('error', err.message)
+            })
+        })
+        .catch(err=>{
+            console.log('error', err.message)
+        })
+        
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
 })
 
 
-// CREATE ENTRY FOR STRATEGIES
+// CREATE NEW ENTRY FOR STRATEGIES
 router.get('/saved/strategies/new',isLoggedIn,(req,res)=>{
     let userInfo= res.locals.currentUser.id
     db.weapon.findAll({
@@ -310,6 +314,101 @@ router.get('/saved/strategies/new',isLoggedIn,(req,res)=>{
         req.flash('error', err.message)
     })
 })
+
+// EDIT ENTRY FOR STRATEGIES
+router.get('/saved/strategies/edit/:idx',isLoggedIn,(req,res)=>{
+    let userInfo= res.locals.currentUser.id
+    db.strategy.findOne({
+        where: {id: req.params.idx,
+                userId: userInfo}, 
+        include: [db.weapon, db.map]
+    })
+    .then(entryValues=>{
+        db.weapon.findAll({
+            where: {userId: userInfo}
+        })
+        .then(foundWeaps=>{
+            db.map.findAll({
+                where: {userId: userInfo}
+            })
+            .then(foundMaps=>{
+                res.render('h5/saved/strategies/edit',{
+                    savedWeaps: foundWeaps,
+                    savedMaps: foundMaps,
+                    prevValues: entryValues
+                })
+            })
+            .catch(err=>{
+                console.log('error', err.message)
+            })
+        })
+        .catch(err=>{
+            console.log('error', err.message)
+        })
+    })
+    .catch(err=>{
+        console.log('error', err.message)
+    })
+})
+
+// PUT UPDATED ENTRY FOR STRATEGIES
+router.put('/saved/strategies/edit/:idx',isLoggedIn,(req,res)=>{
+    //res.send(req.body)
+    let userInfo= res.locals.currentUser.id
+    let entryId= req.params.idx
+    db.strategy.findByPk(entryId,{
+        where: {userId: userInfo}
+    })
+    .then(strat=>{
+        db.weapon.findByPk(req.body.weapChoice)
+        .then(updatedWeap=>{
+            strat.setWeapons([updatedWeap])
+            .then(() => {
+                db.map.findByPk(req.body.mapChoice)
+                .then(updatedMap=>{
+                    strat.setMaps([updatedMap])
+                    .then(()=>{
+                        db.strategy.update({
+                            description: req.body.description
+                            },{
+                            where: {id: entryId}
+                            })
+                            .then(rowsUpdates=>{
+                                db.strategy.findByPk(entryId, {
+                                    include: [db.weapon, db.map]
+                                })
+                                .then(updatedEntry=>{
+                                    console.log(updatedEntry.dataValues,updatedEntry.weapons[0].dataValues)
+                                    
+                                })
+                                .catch(err=>{
+                                    console.log('error 1', err.message)
+                                })
+                            })
+                            .catch(err=>{
+                                console.log('error 2', err.message)
+                            })
+                    }).catch(err=>{
+                        console.log('error3', err.message)
+                    })
+                }).catch(err=>{
+                    console.log('error4', err.message)
+                })    
+            })
+            .catch(err=>{
+                console.log('error5', err.message)
+            })
+        })
+        .catch(err=>{
+            console.log('error6', err.message)
+        })
+        res.redirect('/')
+    })
+    .catch(err=>{
+        console.log('error7', err.message)
+    })
+})
+
 
 
 
