@@ -113,3 +113,16 @@ db.map.findByPk(3)
 .catch(err=>{
     console.log('error', err.message)
 })
+
+(property) "WeaponStats": {
+    WeaponId: {
+        StockId: number;
+        Attachments: undefined[];
+    };
+    TotalShotsFired: number;
+    TotalShotsLanded: number;
+    TotalHeadshots: number;
+    TotalKills: number;
+    TotalDamageDealt: number;
+    TotalPossessionTime: string;
+}[]

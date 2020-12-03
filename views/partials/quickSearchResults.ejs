@@ -1,38 +1,36 @@
 
-    <div class="quicksearch-results-display">
-        <% if(gamerInfo) { %>
-        <!-- GAME TYPE -->
-        <h4>Game: </h4> <%= gamerInfo.haloGame %> <br>
-            
-        <!-- Player Data -->
-            <h4>Player Data <i>(based on last 5 matches):</i></h4>
-            Gamertag: <%=  gamerInfo.gamertag %> <br>
-            Avg Kills: <%=  gamerInfo.avgKills %> <br>
-            Kill-Death Ratio: <%=  gamerInfo.killDeathRatio %> <br>
-            Headshots Per Game:<%=  gamerInfo.headshotsPerGame %> <br>
-        <!-- Last Match Data --> 
-            <h4>Last Game: </h4>
-            <!-- Won or Lost -->
-            Result: <% if(gamerInfo.haloGame==='haloMCC'){ %>
-                <% if(lastGame.wonOrLost=== true){ %> 
-                   <%= 'Match Won' %> 
-                <% } else {%>
-                    <%= 'Match Lost' %> 
-                <%  } %>
-            <% } else {%> 
-                <% if(lastGame.wonOrLost=== 0){ %> 
-                    <%= 'Did not finish' %> 
-                 <% } else if(lastGame.wonOrLost=== 1){%>
-                     <%= 'Match Lost' %> 
-                 <%  } else if(lastGame.wonOrLost=== 2){%>
-                    <%= 'Tied' %> 
-                <%  } else if(lastGame.wonOrLost=== 3){%>
-                    <%= 'Match Won' %> 
-                <%  } %>
-            <% } %> <br>
-            Kills: <%= lastGame.matchKills %> <br>
-            Deaths: <%= lastGame.matchDeaths %> <br>
-            Assists: <%= lastGame.matchAssists %> <br>
-            Time Played: <%= lastGame.timePlayed %> <br>
-        <% } %> 
+    <div class="page-display row">
+        <% if(gamerInfo.killDeathRatio) { %>
+            <h4>GAMERTAG:  <%=  gamerInfo.gamertag %>       ||       GAME: <%= gamerInfo.haloGame %> <br></h4> <br>
+            <div class="column">
+                <h4>PLAYER DATA<i>(based on last 5 matches):</i></h4>
+                Avg Kills: <%=  gamerInfo.avgKills %> <br>
+                Kill-Death Ratio: <%=  gamerInfo.killDeathRatio.toPrecision(2) %> <br>
+                Headshots Per Game:<%=  gamerInfo.headshotsPerGame.toPrecision(2) %> <br>
+            </div>
+            <div class="column">
+                <h4>LAST GAME</h4>
+                Result: <% if(gamerInfo.haloGame==='haloMCC'){ %>
+                    <% if(lastGame.wonOrLost=== true){ %> 
+                        <%= 'WON' %> 
+                    <% } else {%>
+                            <%= 'LOST' %> 
+                    <%  } %>
+                <% } else {%> 
+                    <% if(lastGame.wonOrLost=== 0){ %> 
+                        <%= 'Did not finish' %> 
+                    <% } else if(lastGame.wonOrLost=== 1){%>
+                        <%= 'Match Lost' %> 
+                    <%  } else if(lastGame.wonOrLost=== 2){%>
+                        <%= 'Tied' %> 
+                    <%  } else if(lastGame.wonOrLost=== 3){%>
+                        <%= 'Match Won' %> 
+                    <%  } %>
+                <% } %> <br>
+                Kills: <%= lastGame.matchKills %> <br>
+                Deaths: <%= lastGame.matchDeaths %> <br>
+                Assists: <%= lastGame.matchAssists %> <br>
+                Time Played: <%= lastGame.timePlayed %> <br>
+            </div> 
+        <% } %>
     </div>

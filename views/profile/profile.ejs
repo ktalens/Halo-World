@@ -2,37 +2,67 @@
 
 <div class="profile-container">
     <main>
-        <div class="row">
+        <div class="game-tabs row">
+            <button class="tablinks" onclick="openGameTab(event, 'opt_haloMCC')" id="defaultOpen"><h2>HALO MCC</h2></button>
+            <button class="tablinks" onclick="openGameTab(event, 'opt_halo5')"><h2>HALO 5</h2></button>
+            <button class="tablinks" onclick="openGameTab(event, 'opt_hW2')"><h2>HALO WARS 2</h2></button>
+        </div>
+            
+        <div class="tabcontent row" id="opt_haloMCC">
+            <div class=" column">
+                <h3>MY PLAYBOOK</h3><br>
+                <div class="tabentry">
+                    <h5>STRATEGIES</h5>
+                    <a href="/mcc/saved/strategies">Strategies</a><br>
+                </div>
+            </div> 
             <div class="column">
-                <h2>HALO 5</h2>
-                <h3>GAMEPLAY</h3><br>
-                <a href="/h5/saved/weapons">Saved Weapons</a><br>
-                <a href="/h5/saved/maps">Saved Maps</a><br>
+                <h3>PLAYER STATS</h3><br>
+                <% if(haloMCC){  %>
+                    <%- include('../partials/mccplayerstats.ejs') %> 
+                <% } %>
+            </div>
+        </div>
+
+        <div class="tabcontent row" id="opt_halo5">
+            <div class=" column">
+                <h3>MY PLAYBOOK</h3><br>
+                <div class="tabentry">
+                    <h5>STRATEGIES</h5>
+                    <a href="/h5/saved/strategies">Saved Strategies</a><br>
+                </div> 
+                <div class="tabentry">
+                    <h5>WEAPONS</h5>
+                    <a href="/h5/saved/weapons">Go to saved weapons</a><br>
+                </div>
+                <div class="tabentry">
+                    <h5>MAPS</h5>
+                    <a href="/h5/saved/maps">Go to saved maps</a><br>   
+                </div>
+            </div>
+            <div class="gampeplay-stats column">
                 <h3>PLAYER STATS</h3><br>
                 <% if(halo5){  %>
                     <%- include('../partials/h5playerstats.ejs') %> 
                 <% } %> 
             </div>
-            <div class="column">
-                <h2>HALO MCC</h2>
-                <h3>GAMEPLAY</h3><br>
-                <a href="/mcc/saved/strategies">Strategies</a><br>
-                <a href="/mcc/saved/maps">Saved Maps</a><br>
-                <a href="/mcc/saved/maps">Saved Maps</a><br>
-                <h3>PLAYER STATS</h3><br>
-                <% if(haloMCC){  %>
-                    <%- include('../partials/mccplayerstats.ejs') %> 
-                <% } %>   
-            </div>
-            <div class="column">
-                <h2>HALO WARS 2</h2>
-                <h3>GAMEPLAY</h3><br>
-                <p>(Coming soon...)</p>
-                <h3>PLAYER STATS</h3><br>
-                <p>(Coming soon...)</p>
-            </div>
         </div>
+
+        <div class="tabcontent" id="opt_hW2">
+            <div class="tabentry">
+                <div class="column">
+                    <h3>GAMEPLAY</h3><br>
+                    <p>(Coming soon...)</p>
+                </div>
+                <div class="column">
+                    <h3>PLAYER STATS</h3><br>
+                    <p>(Coming soon...)</p>
+                </div>
+            </div>   
+        </div>
+
     </main>
+
     <section>
         <h2>My Friends</h2>
     </section>

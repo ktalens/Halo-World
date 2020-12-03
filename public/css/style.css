@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 header {
    border: 1px solid black;
    background-color: rgba(19, 32, 76, 0.527);
@@ -41,10 +47,8 @@ font-family: 'Baloo Tammudu 2', cursive;*/
  main {
     display: inline-flex;
     flex-wrap: wrap;
-    height: auto;
     width: 100%;
     justify-content: space-around;
-
     font-family: 'Baloo Tammudu 2', cursive;
  }
  h2,h3 {
@@ -77,10 +81,10 @@ a:visited{
  
  .login {
     width: 800px;
- margin: 0 auto;
- text-align: center;
- display: flexbox;
- flex-direction: column;
+   margin: 0 auto;
+   text-align: center;
+   display: flexbox;
+   flex-direction: column;
 }
 
 .login-entry{
@@ -167,6 +171,9 @@ a:visited{
    background-color:rgba(59, 96, 134, 0.438);
 }
 
+#myProfileOptions{
+   right: 0;
+}
 .submenu {
    margin-left: 30px;
    margin-top: 0px;
@@ -179,14 +186,35 @@ a:visited{
 
 .column {
    float: left;
-   width: 33.1%;
-   border-style: solid;
-   border-color: rgb(0, 0, 0);
-   border-width: 0 1px 0 1px;
+   width: 45%;
+   height: 100%;
+   margin: 2%;
+   padding: 3%;
+   background-color: rgba(255, 255, 255, 0.25);
+   border-radius: 6px;
+   box-shadow: 1px 1px black;
  }
+
+.tabentry{
+   background-color: rgba(57, 57, 57, 0.3);
+   padding: 3%;
+   margin: 2%;
+   border-radius: 4px;
+   box-shadow: 1px 1px black;
+   width: 100%;
+}
+.entry-data{
+   background-color: rgba(255, 255, 255, 0.3);
+   padding: 3%;
+   margin: 2%;
+   border-radius: 3px;
+   border: .5px solid black;
+   box-shadow: 1px 1px rgba(0, 0, 0, 0.303);
+}
  .row{
    width: 100%;
  }
+ 
  /* Clear floats after the columns */
  .row:after {
    content: "";
@@ -197,14 +225,30 @@ a:visited{
     width: 100%;
     background-color: rgb(66, 84, 122);
  }
+ 
+ #homepage-row{
+   height: 1000px;
+   /* overflow: scroll; */
+ }
+#homepage-column{
+   height: 40%;
+}
 
-.quicksearch-results-display{
+.page-display{
    border: 1px solid black;
    background-color: rgb(171, 171, 171);
+   width: 100%;
+   height: 100%;
+   margin: 2%;
+   padding: 3%;
+   /* background-color: rgba(255, 255, 255, 0.25); */
+   border-radius: 6px;
+   box-shadow: 1px 1px black;
 }
 
 .profile-container{
    background-color: rgba(167, 167, 167, 0.759);
+   border: 1px solid black;
 }
 
 .auth-form{
@@ -215,3 +259,51 @@ a:visited{
    width: 60%;
    height: 200px;
 }
+
+/* Style the game-tabs */
+.game-tabs {
+   overflow: hidden;
+   border: 1px solid #ccc;
+   background-color: #f1f1f1;
+   float: initial;
+ }
+ 
+ /* Style the buttons that are used to open the game-tabs content */
+ .game-tabs button {
+   background-color: inherit;
+   float: left;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+ }
+ 
+ /* Change background color of buttons on hover */
+ .game-tabs button:hover {
+   background-color: #ddd;
+ }
+ 
+ /* Create an active/current tablink class */
+ .game-tabs button.active {
+   background-color: #ccc;
+ }
+ 
+ /* Style the game-tabs content */
+ .tabcontent {
+   display: none;
+   padding: 6px 12px;
+   border: 1px solid #ccc;
+   border-top: none;
+   width: 100%;
+ }
+
+ .tabcontent {
+   animation: fadeEffect 1s; /* Fading effect takes 1 second */
+ }
+ 
+ /* Go from zero to full opacity */
+ @keyframes fadeEffect {
+   from {opacity: 0;}
+   to {opacity: 1;}
+ }

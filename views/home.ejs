@@ -1,7 +1,7 @@
 <h2>HOME</h2>
 
 <section>
-    <h3>Quick Search:</h3>
+    <h3>QUICK SEARCH:</h3>
     <form method="POST" action="/" id="gamertagSearch">
         <label for="gamertag">Stats by Gamertag:</label>
         <input id="gamertag" name="gamertag" type="text">
@@ -15,22 +15,22 @@
 <%- include('partials/quickSearchResults.ejs') %> 
 </section>
 <main id="homepage">
-    <div class="row">
-        <div class="column">
+    <div class="row" id="homepage-row">
+        <div class="column" id="homepage-column">
             <h2>Halo 5</h2>
+            <% if (currentUser) {%>
+                <li><a href="/profile/">My Profile</a></li>
+                <br> 
+                <br>
+            <% } else { %>
+                <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info!                 <br>
+                <br>
+           <% } %>
             <a href="/h5/maps">See Maps</a><br>
             <a href="/h5/weapons">See Weapons</a><br>
-            <a href="/h5/saved/strategies/new">Add a Strategy</a><br>
-            <li><a href="/h5/saved/strategies/">My Game</a></li><br> 
-            <% if (currentUser) {%>
-                
-                <li><a href="/h5/saved/weapons">My Weapons</a></li><br> 
-                <li><a href="/h5/saved/maps">My Maps</a></li><br> 
-            <% } else { %>
-                <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info! 
-           <% } %>
+            <a href="/h5/gameBaseVariants">See Game Variants</a><br>
         </div>
-        <div class="column">
+        <div class="column"id="homepage-column">
             <h2>Halo MCC</h2>
             <% if (currentUser) {%>
                 <li><a href="#">My Game</a></li><br>
@@ -40,7 +40,7 @@
            <% } %>
 
         </div>
-        <div class="column">
+        <div class="column" id="homepage-column">
             <h2>Halo Wars 2</h2>
             <p>(Coming soon...)</p>
         </div>

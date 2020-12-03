@@ -1,0 +1,553 @@
+{
+    // Set of responses. One per user queried.
+    "Results": [
+      {
+        // The player's gamertag.
+        "Id": "string",
+  
+        // The result of the query for the player. One of the following:
+        //   Success = 0,
+        //   NotFound = 1,
+        //   ServiceFailure = 2,
+        //   ServiceUnavailable = 3
+        // It is possible for different requests from the batch to succeed and fail
+        // independently.
+        "ResultCode": "int",
+  
+        // The Service Record result for the player. Only set if ResultCode is Success.
+        "Result": {
+  
+          // Custom stats data.
+          "CustomStats": {
+  
+            // List of custom stats by CustomGameBaseVariant.
+            "CustomGameBaseVariantStats": [
+              {
+                // The game base variant specific stats. Flexible stats are available via
+                // the Metadata API.
+                "FlexibleStats": {
+  
+                  // The set of flexible stats that are derived from medal events.
+                  "MedalStatCounts": [
+                    {
+                      // The ID of the flexible stat.
+                      "Id": "guid",
+  
+                      // The number of times this flexible stat was earned.
+                      "Count": "int"
+                    }
+                  ],
+  
+                  // The set of flexible stats that are derived from impulse events.
+                  "ImpulseStatCounts": [
+                    {
+                      // The ID of the flexible stat.
+                      "Id": "guid",
+  
+                      // The number of times this flexible stat was earned.
+                      "Count": "int"
+                    }
+                  ],
+  
+                  // The set of flexible stats that are derived from medal time lapses.
+                  "MedalTimelapses": [
+                    {
+                      // The ID of the flexible stat.
+                      "Id": "guid",
+  
+                      // The amount of time the flexible stat was earned for. This is
+                      // expressed as an ISO 8601 Duration.
+                      "Timelapse": "string"
+                    }
+                  ],    
+  
+                  // The set of flexible stats that are derived from impulse time lapses.
+                  "ImpulseTimelapses": [
+                    {
+                      // The ID of the flexible stat.
+                      "Id": "guid",
+  
+                      // The amount of time the flexible stat was earned for. This is
+                      // expressed as an ISO 8601 Duration.
+                      "Timelapse": "string"
+                    }
+                  ]
+                },
+  
+                // The ID of the game base variant. Game base variants are available via
+                // the Metadata API.
+                "GameBaseVariantId": "guid",
+  
+                // Total number of kills done by the player. This includes melee kills,
+                // shoulder bash kills and Spartan charge kills, all power weapons, AI
+                // kills and vehicle destructions. 
+                "TotalKills": "int",
+  
+                // Total number of headshots done by the player.
+                "TotalHeadshots": "int",
+  
+                // Total weapon damage dealt by the player.
+                "TotalWeaponDamage": "double",
+  
+                // Total number of shots fired by the player.
+                "TotalShotsFired": "int",
+  
+                // Total number of shots landed by the player.
+                "TotalShotsLanded": "int",
+  
+                // The weapon the player used to get the most kills.
+                "WeaponWithMostKills": {
+  
+                  "WeaponId": {
+  
+                    // The ID of the weapon. Weapons are available via the Metadata API.
+                    "StockId": "int",
+  
+                    // Any attachments the weapon had.
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+  
+                  // The number of shots fired for this weapon.
+                  "TotalShotsFired": "int",
+  
+                  // The number of shots landed for this weapon.
+                  "TotalShotsLanded": "int",
+  
+                  // The number of headshots for this weapon.
+                  "TotalHeadshots": "int",
+  
+                  // The number of kills for this weapon.
+                  "TotalKills": "int",
+  
+                  // The total damage dealt for this weapon.
+                  "TotalDamageDealt": "double",
+  
+                  // The total possession time for this weapon. This is expressed as an ISO
+                  // 8601 Duration.
+                  "TotalPossessionTime": "string"
+                },
+  
+                // Total number of melee kills by the player.
+                "TotalMeleeKills": "int",
+  
+                // Total melee damage dealt by the player.
+                "TotalMeleeDamage": "double",
+  
+                // Total number of assassinations by the player.
+                "TotalAssassinations": "int",
+  
+                // Total number of ground pound kills by the player.
+                "TotalGroundPoundKills": "int",
+  
+                // Total ground pound damage dealt by the player.
+                "TotalGroundPoundDamage": "double",
+  
+                // Total number of shoulder bash kills by the player.
+                "TotalShoulderBashKills": "int",
+  
+                // Total shoulder bash damage dealt by the player.
+                "TotalShoulderBashDamage": "double",
+  
+                // Total grenade damage dealt by the player.
+                "TotalGrenadeDamage": "double",
+  
+                // Total number of power weapon kills by the player.
+                "TotalPowerWeaponKills": "int",
+  
+                // Total power weapon damage dealt by the player.
+                "TotalPowerWeaponDamage": "double",
+  
+                // Total number of power weapon grabs by the player.
+                "TotalPowerWeaponGrabs": "int",
+  
+                // Total power weapon possession by the player. This is expressed as an ISO
+                // 8601 Duration.
+                "TotalPowerWeaponPossessionTime": "string",
+  
+                // Total number of deaths by the player.
+                "TotalDeaths": "int",
+  
+                // Total number of assists by the player.
+                "TotalAssists": "int",
+  
+                // Total number of games the player has completed.
+                "TotalGamesCompleted": "int",
+  
+                // Total number of games won by the player.
+                "TotalGamesWon": "int",
+  
+                // Total number of games lost by the player.
+                "TotalGamesLost": "int",
+  
+                // Total number of games tied by the player.
+                "TotalGamesTied": "int",
+  
+                // Total timed played by the player.
+                "TotalTimePlayed": "string",
+  
+                // Total number of grenade kills by the player.
+                "TotalGrenadeKills": "int",
+  
+                // The set of Medals earned by the player.
+                "MedalAwards": [
+                  {
+                    // The ID of the Medal. Medals are available via the Metadata API.
+                    "MedalId": "int",
+  
+                    // The number of times the Medal was earned.
+                    "Count": "int"
+                  }
+                ], 
+  
+                // List of enemy vehicles destroyed. Vehicles are available via the
+                // Metadata API. Note: this stat measures enemy vehicles, not any vehicle
+                // destruction.
+                "DestroyedEnemyVehicles": [
+                  {
+                    // The enemy this entry references
+                    "Enemy": {
+  
+                      // The Base ID for the enemy.
+                      "BaseId": "int",
+  
+                      // The attachments (variants) for the enemy.
+                      "Attachments": [
+                        "int"
+                      ]
+                    },
+  
+                    // Total number of kills on the enemy by the player
+                    "TotalKills": "int"
+                  }
+                ],
+  
+                // List of enemies killed, per enemy type. Enemies are available via the
+                // Metadata API.
+                "EnemyKills": [
+                  {
+                    // The enemy this entry references
+                    "Enemy": {
+  
+                      // The Base ID for the enemy.
+                      "BaseId": "int",
+  
+                      // The attachments (variants) for the enemy.
+                      "Attachments": [
+                        "int"
+                      ]
+                    },
+  
+                    // Total number of kills on the enemy by the player
+                    "TotalKills": "int"
+                  }
+                ],
+  
+                // The set of weapons (weapons and vehicles included) used by the player.
+                "WeaponStats": [
+                  {
+                    "WeaponId": {
+  
+                      // The ID of the weapon. Weapons are available via the Metadata API.
+                      "StockId": "int",
+  
+                      // Any attachments the weapon had.
+                      "Attachments": [ 
+                        "int" 
+                      ]
+                    },
+  
+                    // The number of shots fired for this weapon.
+                    "TotalShotsFired": "int",
+  
+                    // The number of shots landed for this weapon.
+                    "TotalShotsLanded": "int",
+  
+                    // The number of headshots for this weapon.
+                    "TotalHeadshots": "int",
+  
+                    // The number of kills for this weapon.
+                    "TotalKills": "int",
+  
+                    // The total damage dealt for this weapon.
+                    "TotalDamageDealt": "double",
+  
+                    // The total possession time for this weapon. This is expressed as an
+                    // ISO 8601 Duration.
+                    "TotalPossessionTime": "string"
+                  }
+                ],
+  
+                // The set of Impulses (invisible Medals) earned by the player.
+                "Impulses": [
+                  {
+                    // The ID of the Impulse. Impulses are available via the Metadata API.
+                    "Id": "int",
+  
+                    // The number of times the Impulse was earned.
+                    "Count": "int"
+                  }
+                ],
+  
+                // Total number of Spartan kills by the player.
+                "TotalSpartanKills": "int"
+              }
+            ],
+  
+            // A list of up to 3 top game base variants played by the user Top means
+            // Wins/Completed matches. If there is a tie, the one with more completions is
+            // higher. If there's still a tie, the GUIDs are sorted and selected
+            "TopGameBaseVariants": [
+              {
+                // Rank between 1-3
+                "GameBaseVariantRank": "int",
+  
+                // Number of games played in game base variant
+                "NumberOfMatchesCompleted": "int",
+  
+                // Id of the game base variant
+                "GameBaseVariantId": "guid",
+  
+                // Number of matches won on game base variant
+                "NumberOfMatchesWon": "int"
+              }
+            ],
+  
+            // Total number of kills done by the player. This includes melee kills,
+            // shoulder bash kills and Spartan charge kills, all power weapons, AI kills
+            // and vehicle destructions. 
+            "TotalKills": "int",
+  
+            // Total number of headshots done by the player.
+            "TotalHeadshots": "int",
+  
+            // Total weapon damage dealt by the player.
+            "TotalWeaponDamage": "double",
+  
+            // Total number of shots fired by the player.
+            "TotalShotsFired": "int",
+  
+            // Total number of shots landed by the player.
+            "TotalShotsLanded": "int",
+  
+            // The weapon the player used to get the most kills.
+            "WeaponWithMostKills": {
+  
+              "WeaponId": {
+  
+                // The ID of the weapon. Weapons are available via the Metadata API.
+                "StockId": "int",
+  
+                // Any attachments the weapon had.
+                "Attachments": [
+                  "int"
+                ]
+              },
+  
+              // The number of shots fired for this weapon.
+              "TotalShotsFired": "int",
+  
+              // The number of shots landed for this weapon.
+              "TotalShotsLanded": "int",
+  
+              // The number of headshots for this weapon.
+              "TotalHeadshots": "int",
+  
+              // The number of kills for this weapon.
+              "TotalKills": "int",
+  
+              // The total damage dealt for this weapon.
+              "TotalDamageDealt": "double",
+  
+              // The total possession time for this weapon. This is expressed as an ISO
+              // 8601 Duration.
+              "TotalPossessionTime": "string"
+            },
+  
+            // Total number of melee kills by the player.
+            "TotalMeleeKills": "int",
+  
+            // Total melee damage dealt by the player.
+            "TotalMeleeDamage": "double",
+  
+            // Total number of assassinations by the player.
+            "TotalAssassinations": "int",
+  
+            // Total number of ground pound kills by the player.
+            "TotalGroundPoundKills": "int",
+  
+            // Total ground pound damage dealt by the player.
+            "TotalGroundPoundDamage": "double",
+  
+            // Total number of shoulder bash kills by the player.
+            "TotalShoulderBashKills": "int",
+  
+            // Total shoulder bash damage dealt by the player.
+            "TotalShoulderBashDamage": "double",
+  
+            // Total grenade damage dealt by the player.
+            "TotalGrenadeDamage": "double",
+  
+            // Total number of power weapon kills by the player.
+            "TotalPowerWeaponKills": "int",
+  
+            // Total power weapon damage dealt by the player.
+            "TotalPowerWeaponDamage": "double",
+  
+            // Total number of power weapon grabs by the player.
+            "TotalPowerWeaponGrabs": "int",
+  
+            // Total power weapon possession by the player. This is expressed as an ISO
+            // 8601 Duration.
+            "TotalPowerWeaponPossessionTime": "string",
+  
+            // Total number of deaths by the player.
+            "TotalDeaths": "int",
+  
+            // Total number of assists by the player.
+            "TotalAssists": "int",
+  
+            // Not used.
+            "TotalGamesCompleted": "int",
+  
+            // Not used.
+            "TotalGamesWon": "int",
+  
+            // Not used.
+            "TotalGamesLost": "int",
+  
+            // Not used.
+            "TotalGamesTied": "int",
+  
+            // Total timed played by the player.
+            "TotalTimePlayed": "string",
+  
+            // Total number of grenade kills by the player.
+            "TotalGrenadeKills": "int",
+  
+            // The set of Medals earned by the player.
+            "MedalAwards": [
+              {
+                // The ID of the Medal. Medals are available via the Metadata API.
+                "MedalId": "int",
+  
+                // The number of times the Medal was earned.
+                "Count": "int"
+              }
+            ], 
+  
+            // List of enemy vehicles destroyed. Vehicles are available via the Metadata
+            // API. Note: this stat measures enemy vehicles, not any vehicle destruction.
+            "DestroyedEnemyVehicles": [
+              {
+                // The enemy this entry references
+                "Enemy": {
+  
+                  // The Base ID for the enemy.
+                  "BaseId": "int",
+  
+                  // The attachments (variants) for the enemy.
+                  "Attachments": [
+                    "int"
+                  ]
+                },
+  
+                // Total number of kills on the enemy by the player
+                "TotalKills": "int"
+              }
+            ],
+  
+            // List of enemies killed, per enemy type. Enemies are available via the
+            // Metadata API.
+            "EnemyKills": [
+              {
+                // The enemy this entry references
+                "Enemy": {
+  
+                  // The Base ID for the enemy.
+                  "BaseId": "int",
+  
+                  // The attachments (variants) for the enemy.
+                  "Attachments": [
+                    "int"
+                  ]
+                },
+  
+                // Total number of kills on the enemy by the player
+                "TotalKills": "int"
+              }
+            ],
+  
+            // The set of weapons (weapons and vehicles included) used by the player.
+            "WeaponStats": [
+              {
+                "WeaponId": {
+  
+                  // The ID of the weapon. Weapons are available via the Metadata API.
+                  "StockId": "int",
+  
+                  // Any attachments the weapon had.
+                  "Attachments": [ 
+                    "int" 
+                  ]
+                },
+  
+                // The number of shots fired for this weapon.
+                "TotalShotsFired": "int",
+  
+                // The number of shots landed for this weapon.
+                "TotalShotsLanded": "int",
+  
+                // The number of headshots for this weapon.
+                "TotalHeadshots": "int",
+  
+                // The number of kills for this weapon.
+                "TotalKills": "int",
+  
+                // The total damage dealt for this weapon.
+                "TotalDamageDealt": "double",
+  
+                // The total possession time for this weapon. This is expressed as an ISO
+                // 8601 Duration.
+                "TotalPossessionTime": "string"
+              }
+            ],
+  
+            // The set of Impulses (invisible Medals) earned by the player.
+            "Impulses": [
+              {
+                // The ID of the Impulse. Impulses are available via the Metadata API.
+                "Id": "int",
+  
+                // The number of times the Impulse was earned.
+                "Count": "int"
+              }
+            ],
+  
+            // Total number of Spartan kills by the player.
+            "TotalSpartanKills": "int"
+          },
+  
+          // Information about the player for whom this data was returned.
+          "PlayerId": {
+  
+            // The gamertag of the player queried.
+            "GamerTag": "string",
+  
+            // Internal use only. This will always be null.
+            "Xuid": null
+          },
+  
+          // The player's Spartan Rank. Zero for custom.
+          "SpartanRank": "int",
+  
+          // The player's XP. Zero for custom.
+          "Xp": "int"
+        }
+      }
+    ],
+  
+    // Internal use only. A set of related resource links.
+    "Links": null
+  }

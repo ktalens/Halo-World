@@ -5399,7 +5399,7 @@
       },
       {
         "WeaponId": {
-          "StockId": 313138863,
+          "StockId": c,
           "Attachments": [
             
           ]
@@ -6246,3 +6246,47 @@
     isNewRecord: false
   }
 ]
+
+
+[
+  weapon {
+    dataValues: {
+      id: 4,
+      weaponId: '2244200496',
+      type: 'Standard',
+      name: 'Flagnum',
+      description: '',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:04.857Z,
+      updatedAt: 2020-11-18T00:33:04.857Z,
+      strategies: [Array]
+    },
+    _previousDataValues: {
+      id: 4,
+      weaponId: '2244200496',
+      type: 'Standard',
+      name: 'Flagnum',
+      description: '',
+      smallIconImageUrl: 'https://image.halocdn.com:443/?path=https%3a%2f%2fcontent.halocdn.com%2fmedia%2fDefault%2fgames%2fhalo-5-guardians%2ftools-of-destruction%2fweapons%2fflagnum-282503fb5260409a844e29eeae45bbca.png&width=332&hash=376WQLPQ8ra7Xbij6jhSp6avT3QG3ccjBS%2fKVFs4Efw%3d',
+      userId: 1,
+      createdAt: 2020-11-18T00:33:04.857Z,
+      updatedAt: 2020-11-18T00:33:04.857Z,
+      strategies: [Array]
+    },
+    _changed: Set(0) {},
+    _options: {
+      isNewRecord: false,
+      _schema: null,
+      _schemaDelimiter: '',
+      include: [Array],
+      includeNames: [Array],
+      includeMap: [Object],
+      includeValidated: true,
+      attributes: [Array],
+      raw: true
+    },
+    isNewRecord: false,
+    strategies: [ [strategy], [strategy], [strategy], [strategy] ]
+  },
+  
