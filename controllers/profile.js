@@ -53,17 +53,17 @@ router.get('/', isLoggedIn, (req, res)=>{
             })
             .catch(err=>{
                 req.flash('error', err.message)
-                res.redirect('/profile/profile')
+                res.redirect('/profile')
             })
         })
         .catch(err=>{
             req.flash('error', err.message)
-            res.redirect('/profile/profile')
+            res.redirect('/profile')
         })
     })
     .catch(err=>{
         req.flash('error', err.message)
-        res.redirect('/profile/profile')
+        res.redirect('/profile')
     })
 })
 
