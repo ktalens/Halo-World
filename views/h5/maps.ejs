@@ -8,13 +8,14 @@
                <option value="<%= map.id %>"><%= map.name %></option> 
             <%  }) %> 
         </select>
-        <input type="submit" value="Go">
+        <input type="submit" value="GO" class="page-disp-button">
     </form>
 </div>
 <div class="page-display row">
-    <div class="column" >
+    <div class="column" id="items-list">
         <ul>
-        <%  mapsData.forEach(item=>{ %> 
+        <%  mapsData.forEach(item=>{ %>
+             
             <li class="item-wrapper">
                 <div class= "game-item" id= "img-with-name">
                     <img src=<%= item.imageUrl %> height="100px" display="block">
@@ -27,7 +28,7 @@
                         <input type="hidden" type="text" name="name" value="<%= item.name %>">
                         <input type="hidden" type="text" name="description" value="<%= item.description %>">
                         <input type="hidden" type="text" name="imageUrl" value="<%= item.imageUrl %>">
-                        <input type="submit" value="favorite">
+                        <input type="submit" value="SAVE" class="page-disp-button">
                     </form>
                 </div> 
                 <div class="game-item" id="game-item-desc">

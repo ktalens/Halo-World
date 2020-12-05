@@ -1,7 +1,6 @@
 <h2>MY MAPS</h2>
-
-
   <div class="page-display column" id="items-list">
+    <span class="span-tab"><button class="page-disp-button"><a href="/h5/maps">ADD MORE</a></button></span>
    <ul >
       <%  savedItems.forEach(user=>{ %> 
           <% if(currentUser.dataValues.id===user.id){ %>
@@ -15,7 +14,7 @@
                     <form method="POST" action="/h5/saved/maps/<%= savedMap.id  %>/?_method=DELETE ">
                           <input type="hidden" type="text" name="mapId" value="<%= savedMap.id %> ">
                           <input type="hidden" type="text" name="userId" value="<%= user.id %> ">
-                          <input type="submit" value="Remove">
+                          <input type="submit" value="Remove" class="page-disp-button">
                       </form>
                   </div>
                   <div class="game-item tabentry" id="game-item-desc">

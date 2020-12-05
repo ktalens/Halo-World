@@ -1,44 +1,47 @@
-<h2>HALO 5 WEAPONS</h2>
-
-<form method="GET" action="/h5/weapons" id="weaponform">
-    <label for="weapons">Weapons:</label>
-    <select id="weapons" name="id" form="weaponform">
-        <% weaponsList.forEach(weap=>{ %> 
-            <% if(weap.isUsableByPlayer=== true){ %>
-                <option value="<%= weap.id %>"><%= weap.name %></option> 
-            <% } %> 
-        <%  }) %> 
-    </select>
-    <input type="submit" value="Go">
-</form>
-
-<ul >
-    <%  weaponsData.forEach(item=>{ %> 
-        <% if(item.isUsableByPlayer=== true){ %>
-            <li class="item-wrapper"> 
-                <div class = "game-item" id="img-with-name">
-                    <img src=<%= item.largeIconImageUrl %> height="100px" >
-                    <%= item.name %> 
-                    <form method="POST" action="/h5/weapons">
-                        <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
-                        <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
-                        <input type="hidden" type="text" name="weaponId" value="<%= item.id %>">
-                        <input type="hidden" type="text" name="type" value="<%= item.type %>">
-                        <input type="hidden" type="text" name="name" value="<%= item.name %>">
-                        <input type="hidden" type="text" name="description" value="<%= item.description %>">
-                        <input type="hidden" type="text" name="smallIconImageUrl" value="<%= item.smallIconImageUrl %>">
-                        <input type="submit" value="favorite">
-                    </form>
-                </div>
-                <div class="game-item" id="game-item-desc">
-                    <u>Type:</u> <%= item.type %> <br>
-                    <u>Description:</u> <%= item.description %> <br>
-                </div>
-            </li> <br>
-        <% } %> 
-        
-    <% }) %> 
-</ul>
+<div class="page-display row">
+    <h2>HALO 5 WEAPONS</h2>
+    <div class="column" id="items-list">   
+        <form method="GET" action="/h5/weapons" id="weaponform">
+            <label for="weapons">Weapons:</label>
+            <select id="weapons" name="id" form="weaponform">
+                <% weaponsList.forEach(weap=>{ %> 
+                    <% if(weap.isUsableByPlayer=== true){ %>
+                        <option value="<%= weap.id %>"><%= weap.name %></option> 
+                    <% } %> 
+                <%  }) %> 
+            </select>
+            <input type="submit" value="Go">
+        </form>
+        <ul >
+            <%  weaponsData.forEach(item=>{ %> 
+                <% if(item.isUsableByPlayer=== true){ %>
+                    <div class="tabentry">
+                        <li class="item-wrapper"> 
+                            <div class = "game-item" id="img-with-name">
+                                <img src=<%= item.largeIconImageUrl %> height="100px" >
+                                <%= item.name %> 
+                                <form method="POST" action="/h5/weapons" >
+                                    <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
+                                    <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
+                                    <input type="hidden" type="text" name="weaponId" value="<%= item.id %>">
+                                    <input type="hidden" type="text" name="type" value="<%= item.type %>">
+                                    <input type="hidden" type="text" name="name" value="<%= item.name %>">
+                                    <input type="hidden" type="text" name="description" value="<%= item.description %>">
+                                    <input type="hidden" type="text" name="smallIconImageUrl" value="<%= item.smallIconImageUrl %>">
+                                <input type="submit" value="favorite" >
+                                </form>
+                            </div>
+                            <div class="game-item" id="game-item-desc">
+                                <u>Type:</u> <%= item.type %> <br>
+                                <u>Description:</u> <%= item.description %> <br>
+                            </div>
+                        </li>
+                    </div> 
+                <% } %> 
+            <% }) %> 
+        </ul>
+    </div>
+</div>
 
 <!-- 
 {

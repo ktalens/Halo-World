@@ -1,8 +1,8 @@
 <h2>HALO 5: GAME STRATEGIES</h2>
 
-<button><a href="/h5/saved/strategies/new">Add a Strategy</a></button>
-<button><a href="/h5/weapons">Add Weapons</a></button>
-<button><a href="/h5/maps">Add Maps</a></button>
+<button class="page-disp-button"><a href="/h5/saved/strategies/new">NEW STRATEGY</a></button>
+<button class="page-disp-button"><a href="/h5/weapons">ADD WEAPONS</a></button>
+<button class="page-disp-button"><a href="/h5/maps">ADD MAPS</a></button>
 
 <%  entries.forEach(entry=>{ %> 
 <div class="page-display row">
@@ -27,10 +27,10 @@
         <div class="tabentry">
             <%= entry.description %>
         </div>
-        <button><a href="/h5/saved/strategies/edit/<%= entry.id  %>">Edit</a></button>
+        <button class="page-disp-button"><a href="/h5/saved/strategies/edit/<%= entry.id  %>">EDIT</a></button>
         <form method="POST" action="/h5/saved/strategies/<%= entry.id %>/?_method=DELETE ">
             <input type="hidden" type="text" name="stratId" value="<%= entry.id %> ">
-            <input type="submit" value="Delete">
+            <input type="submit" value="DELETE" class="page-disp-button">
         </form>
     </div>  
 </div>
