@@ -1,13 +1,17 @@
 <h2>HALO 5: GENERAL PLAYER STATS </h2>
-<%= matchData[0].Players[0].Player.Gamertag %> 
-
-<% matchData.forEach(match=>{ %> 
-    <h4><%= match.MapId %> </h4>
-    Date: <%= match.MatchCompletedDate.ISO8601Date %>, Duration: <%= match.MatchDuration %> <br>
-    K: <%= match.Players[0].TotalKills %> <br>
-    D: <%= match.Players[0].TotalDeaths %> <br>
-    A: <%= match.Players[0].TotalAssists%> <br>
+<div class="page-display">
+  <% if(matchData[0]){ %> 
+    <% matchData.forEach(match=>{ %> 
+      <h4><%= match.MapId %> </h4>
+      Date: <%= match.MatchCompletedDate.ISO8601Date %>, Duration: <%= match.MatchDuration %> <br>
+      K: <%= match.Players[0].TotalKills %> <br>
+      D: <%= match.Players[0].TotalDeaths %> <br>
+      A: <%= match.Players[0].TotalAssists%> <br>
     <% }) %> 
+  <% }else{ %>
+    <%= `NO HALO 5 DATA FOR ${currentUser.dataValues.gamertag}` %>
+  <% } %> 
+</div>
 
 <!--     
         {

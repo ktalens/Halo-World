@@ -42,4 +42,5 @@ const openGameTab = (e, gameOption) =>{
 
 }
 
+
 document.getElementById("defaultOpen").click();

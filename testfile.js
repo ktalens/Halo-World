@@ -106,23 +106,43 @@ const db = require("./models");
 //     console.log('error', err.message)
 // })
 
-db.map.findByPk(3)
-.then(map=>{
-    console.log(map)
+// db.map.findByPk(3)
+// .then(map=>{
+//     console.log(map)
+// })
+// .catch(err=>{
+//     console.log('error', err.message)
+// })
+
+// (property) "WeaponStats": {
+//     WeaponId: {
+//         StockId: number;
+//         Attachments: undefined[];
+//     };
+//     TotalShotsFired: number;
+//     TotalShotsLanded: number;
+//     TotalHeadshots: number;
+//     TotalKills: number;
+//     TotalDamageDealt: number;
+//     TotalPossessionTime: string;
+// }[]
+
+db.user.findOne(
+    {where: {id: 1}
+})
+.then(foundUser=>{
+    foundUser.getStrategies({
+        include: [db.weapon,db.map]
+    })
+    .then(foundStrategies=>{
+        foundStrategies.forEach(entry=>{
+            console.log(entry.description,entry.weapons[0].name)
+        })
+    })
+    .catch(err=>{
+        console.log(err.message)
+    })
 })
 .catch(err=>{
-    console.log('error', err.message)
+    console.log(err.message)
 })
-
-(property) "WeaponStats": {
-    WeaponId: {
-        StockId: number;
-        Attachments: undefined[];
-    };
-    TotalShotsFired: number;
-    TotalShotsLanded: number;
-    TotalHeadshots: number;
-    TotalKills: number;
-    TotalDamageDealt: number;
-    TotalPossessionTime: string;
-}[]

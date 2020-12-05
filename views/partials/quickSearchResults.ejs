@@ -1,12 +1,16 @@
 
     <div class="page-display row">
-        <% if(gamerInfo.killDeathRatio) { %>
+        <% if(gamerInfo) { %>
             <h4>GAMERTAG:  <%=  gamerInfo.gamertag %>       ||       GAME: <%= gamerInfo.haloGame %> <br></h4> <br>
             <div class="column">
                 <h4>PLAYER DATA<i>(based on last 5 matches):</i></h4>
                 Avg Kills: <%=  gamerInfo.avgKills %> <br>
-                Kill-Death Ratio: <%=  gamerInfo.killDeathRatio.toPrecision(2) %> <br>
-                Headshots Per Game:<%=  gamerInfo.headshotsPerGame.toPrecision(2) %> <br>
+                <% if (gamerInfo.killDeathRatio){ %> 
+                    Kill-Death Ratio: <%=  gamerInfo.killDeathRatio.toPrecision(2) %> <br>
+                    Headshots Per Game:<%=  gamerInfo.headshotsPerGame.toPrecision(2) %> <br>
+                <% } else { %>
+                    <%= 'No data to display' %> 
+                <% } %>  
             </div>
             <div class="column">
                 <h4>LAST GAME</h4>

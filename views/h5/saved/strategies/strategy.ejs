@@ -1,18 +1,40 @@
 <h2>HALO 5: GAME STRATEGIES</h2>
 
-<a href="/h5/saved/strategies/new">Add a Strategy</a>
-<ul >
-    <%  savedItems.forEach(item=>{ %> 
-        <li class="item-wrapper"> 
-            <div class = "game-item" id="img-with-name">
-                <button><a href="/h5/saved/strategies/edit/<%= item.id  %>">Edit</a></button>
-                <form method="POST" action="/h5/saved/strategies/<%= item.id  %>/?_method=DELETE ">
-                    <input type="submit" value="Delete">
-                </form>
-            </div>
-            <div class="game-item" id="game-item-desc">
-                <%= item.description %>
-            </div>
-            </li> <br>    
-    <% }) %>
-</ul>
+<button><a href="/h5/saved/strategies/new">Add a Strategy</a></button>
+<button><a href="/h5/weapons">Add Weapons</a></button>
+<button><a href="/h5/maps">Add Maps</a></button>
+
+<%  entries.forEach(entry=>{ %> 
+<div class="page-display row">
+    <div class="column">
+        <h3>DETAILS:</h3>
+        <figure>
+            <img height="75px" src="<%= entry.weapons[0].smallIconImageUrl %>">
+            <figcaption><%= entry.weapons[0].name %></figcaption>
+        </figure>
+        <figure>
+            <img height="100px" src="<%= entry.maps[0].imageUrl %>">
+            <figcaption><%= entry.maps[0].name %></figcaption>
+        </figure><br>
+        ADDED: <%= entry.createdAt %> <br>
+        WEAPON TYPE: <%= entry.weapons[0].type %><br>
+        MAP MODES: (Coming Soon...)<br>
+        TEAMMATES: (Coming Soon...)<br>
+    </div>
+                 
+    <div class="column">
+        <h3>DESCRIPTION:</h3>
+        <div class="tabentry">
+            <%= entry.description %>
+        </div>
+        <button><a href="/h5/saved/strategies/edit/<%= entry.id  %>">Edit</a></button>
+        <form method="POST" action="/h5/saved/strategies/<%= entry.id %>/?_method=DELETE ">
+            <input type="hidden" type="text" name="stratId" value="<%= entry.id %> ">
+            <input type="submit" value="Delete">
+        </form>
+    </div>  
+</div>
+<% }) %>
+
+
+

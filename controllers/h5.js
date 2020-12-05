@@ -233,9 +233,12 @@ router.get('/saved/strategies/',isLoggedIn,(req,res)=>{
         {where: {id: userInfo}
     })
     .then(foundUser=>{
-        foundUser.getStrategies()
+        foundUser.getStrategies({
+            where: {gameId: 5}, //<-- FOR HALO 5 
+            include: [db.weapon,db.map]
+        })
         .then(foundStrategies=>{
-            res.render('h5/saved/strategies/strategy', {savedItems: foundStrategies})
+            res.render('h5/saved/strategies/strategy', {entries: foundStrategies})
         })
         .catch(err=>{
             req.flash('error', err.message)
@@ -410,7 +413,20 @@ router.put('/saved/strategies/edit/:idx',isLoggedIn,(req,res)=>{
 })
 
 
-
+// DELETE SAVED STRATEGY 
+router.delete('/saved/strategies/:idx',(req,res)=>{
+    let userId= res.locals.currentUser.id
+    db.strategy.destroy({
+        where: {id: req.body.stratId}
+    })
+    .then(deletedItems=>{
+        console.log('deleted: ',deletedItems)
+        res.redirect('/h5/saved/strategies')
+    })
+    .catch(err=>{
+        req.flash('error', err.message)
+    })
+})
 
 // GET PLAYER DATA
 router.get('/stats',isLoggedIn,(req,res)=>{

@@ -1,25 +1,32 @@
 <h2>MY MAPS</h2>
 
 
-<ul >
-    <%  savedItems.forEach(user=>{ %> 
-        <% if(currentUser.dataValues.id===user.id){ %>
-          <% user.maps.forEach(savedMap=>{ %>
-            <li class="item-wrapper"> 
-              <div class = "game-item" id="img-with-name">
-                  <img src=<%= savedMap.imageUrl %> height="80px" >
-                  Name: <%= savedMap.name %> 
-                <form method="POST" action="/h5/saved/maps/<%= savedMap.id  %>/?_method=DELETE ">
-                      <input type="hidden" type="text" name="mapId" value="<%= savedMap.id %> ">
-                      <input type="hidden" type="text" name="userId" value="<%= user.id %> ">
-                      <input type="submit" value="Remove">
-                  </form>
+  <div class="page-display column" id="items-list">
+   <ul >
+      <%  savedItems.forEach(user=>{ %> 
+          <% if(currentUser.dataValues.id===user.id){ %>
+            <% user.maps.forEach(savedMap=>{ %>
+              
+              <div class="row">
+                <li class="item-wrapper"> 
+                  <div class = "game-item" id="img-with-name">
+                      <img src=<%= savedMap.imageUrl %> height="80px" >
+                      Name: <%= savedMap.name %> 
+                    <form method="POST" action="/h5/saved/maps/<%= savedMap.id  %>/?_method=DELETE ">
+                          <input type="hidden" type="text" name="mapId" value="<%= savedMap.id %> ">
+                          <input type="hidden" type="text" name="userId" value="<%= user.id %> ">
+                          <input type="submit" value="Remove">
+                      </form>
+                  </div>
+                  <div class="game-item tabentry" id="game-item-desc">
+                      <u>Description:</u> <%= savedMap.description %> <br>
+                  </div>
+                </li> 
               </div>
-              <div class="game-item" id="game-item-desc">
-                  <u>Description:</u> <%= savedMap.description %> <br>
-              </div>
-            </li> <br>    
-         <% }) %> 
-        <% } %> 
-    <% }) %> 
-</ul>
+              <br>    
+          <% }) %> 
+          <% } %> 
+      <% }) %> 
+    </ul>
+  </div>
+

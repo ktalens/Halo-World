@@ -1,45 +1,56 @@
 <h2>HALO 5 MAPS</h2>
 
-<form method="GET" action="/h5/maps" id="mapform">
-    <label for="maps">Maps:</label>
-    <select id="maps" name="id" form="mapform">
-        <% mapsList.forEach(map=>{ %> 
-           <option value="<%= map.id %>"><%= map.name %></option> 
-        <%  }) %> 
-    </select>
-    <input type="submit" value="Go">
-</form>
+<div class="page-display row">
+    <form method="GET" action="/h5/maps" id="mapform">
+        <label for="maps">Maps:</label>
+        <select id="maps" name="id" form="mapform">
+            <% mapsList.forEach(map=>{ %> 
+               <option value="<%= map.id %>"><%= map.name %></option> 
+            <%  }) %> 
+        </select>
+        <input type="submit" value="Go">
+    </form>
+</div>
+<div class="page-display row">
+    <div class="column" >
+        <ul>
+        <%  mapsData.forEach(item=>{ %> 
+            <li class="item-wrapper">
+                <div class= "game-item" id= "img-with-name">
+                    <img src=<%= item.imageUrl %> height="100px" display="block">
+                    <%= item.name %> 
+                    <form method="POST" action="/h5/maps">
+                        <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
+                        <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
+                        <input type="hidden" type="text" name="mapId" value="<%= item.id %>">
+                        <input type="hidden" type="text" name="type" value="<%= item.type %>">
+                        <input type="hidden" type="text" name="name" value="<%= item.name %>">
+                        <input type="hidden" type="text" name="description" value="<%= item.description %>">
+                        <input type="hidden" type="text" name="imageUrl" value="<%= item.imageUrl %>">
+                        <input type="submit" value="favorite">
+                    </form>
+                </div> 
+                <div class="game-item" id="game-item-desc">
+                    <u>Modes: </u><% if(item.supportedGameModes){%> 
+                        <% item.supportedGameModes.forEach(mode=>{ %> 
+                            <%= mode %>
+                            <% }) %> 
+                        <% } %> 
+                        <br>
+                    <u>Description: </u><%= item.description %> <br>
+                    <a method="GET" href="/variants/<%= item.id %> ">See Variants</a>
+                </div>
+            </li>
+        <% }) %> 
+        </ul>
+    </div>
+</div>
 
-<ul>
-    <%  mapsData.forEach(item=>{ %> 
-        <li class="item-wrapper">
-            <div class= "game-item" id= "img-with-name">
-                <img src=<%= item.imageUrl %> height="100px" display="block">
-                <%= item.name %> 
-                <form method="POST" action="/h5/maps">
-                    <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
-                    <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
-                    <input type="hidden" type="text" name="mapId" value="<%= item.id %>">
-                    <input type="hidden" type="text" name="type" value="<%= item.type %>">
-                    <input type="hidden" type="text" name="name" value="<%= item.name %>">
-                    <input type="hidden" type="text" name="description" value="<%= item.description %>">
-                    <input type="hidden" type="text" name="imageUrl" value="<%= item.imageUrl %>">
-                    <input type="submit" value="favorite">
-                </form>
-            </div> 
-            <div class="game-item" id="game-item-desc">
-                <u>Modes: </u><% if(item.supportedGameModes){%> 
-                    <% item.supportedGameModes.forEach(mode=>{ %> 
-                        <%= mode %>
-                        <% }) %> 
-                    <% } %> 
-                    <br>
-                <u>Description: </u><%= item.description %> <br>
-                <a method="GET" href="/variants/<%= item.id %> ">See Variants</a>
-            </div>
-        </li>
-    <% }) %> 
-</ul>
+
+  
+
+
+
 
 <!-- <h2>RESPONSE DATA STRUCTURE</h2>
 {

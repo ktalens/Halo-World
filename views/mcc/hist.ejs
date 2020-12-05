@@ -1,41 +1,43 @@
-<h2>HALO MCC: GAME HISTORY</h2>
-<h3><%= matches.gamertag %> </h3>
+<div class="page-display">
+  <h2>HALO MCC: GAME HISTORY</h2>
+  <div class="row">
+    <div class= "column">
+      <h3>SUMMARY</h3>
+      KILL-DEATH RATIO: <%= (matches.summary.killDeathRatio).toPrecision(3) %> <br>
+      HEADSHOT RATE: <%= (matches.summary.headshotRate).toPrecision(3) %> <br>
+      KILLS PER GAME: <%= (matches.summary.killsPerGame).toPrecision(2) %> <br>
+      DEATHS PER GAME: <%= (matches.summary.deathsPerGame).toPrecision(2) %> <br>
+      HEADSHOTS PER GAME: <%= (matches.summary.headshotsPerGame).toPrecision(2) %> <br>
+    </div>
+    <div class="game-matches column">
+      <h3>LAST <%= matches.summary.count %> GAMES</h3>
+      <% matches.games.forEach((game,i)=>{ %>
+        <div class="tabentry">
+          <h3>
+            <% if (game.won===true){ %>
+              <%= `${i+1}: ${game.gameVariant}- WON` %>
+            <% } else if (game.won===false){ %>
+              <%= `${i+1}: ${game.gameVariant}- LOST` %>
+            <% } %></h3>
+            <h3>KILLS: <%= game.kills %>  ||  DEATHS: <%= game.deaths %>  ||  ASSISTS: <%= game.assists %> </h3>
+            <details><small>
+                HEADSHOTS: <%= game.headshots %> <br>
+                MEDALS: <%= game.medals %> <br>
+                KILL-DEATH RATIO: <%= (game.killDeathRatio).toPrecision(3) %> <br>
+                HEADSHOT RATIO: <%= (game.headshotRate).toPrecision(2) %> <br>
+                DATE/TIME PLAYED: <%= game.playedAt %><br>
+                TIME SINCE GAME: <%= game.playedAtRecency %><br>
+            </small></details>
+            
+        </div>
+        <% }) %> 
+    </div>
+  </div>
+</div>
 
-<details>
-    Summary:
-    KDR: <%= (matches.summary.killDeathRatio).toPrecision(3) %> <br>
-    Headshot Rate: <%= (matches.summary.headshotRate).toPrecision(3) %> <br>
-    Kills per Game: <%= (matches.summary.killsPerGame).toPrecision(2) %> <br>
-    Deaths per Game: <%= (matches.summary.deathsPerGame).toPrecision(2) %> <br>
-    Headshots per Game: <%= (matches.summary.headshotsPerGame).toPrecision(2) %> <br>
-</details>
 
 
-Last <%= matches.summary.count %> Matches:
-<ol>
-    <% matches.games.forEach(game=>{ %>
-        <li>
-            <b>
-              <% if (game.won===true){ %>
-                <%= 'Win' %>
-              <% } else if (game.won===false){ %>
-                <%= 'Lost' %>
-              <% } %> <br>
-            </b>
-            <%= game.gameVariant %> <br>
-            KDA: <%= game.kills %> || <%= game.deaths %> || <%= game.assists %> <br>
-              <small>
-                Headshots: <%= game.headshots %> <br>
-                Medals: <%= game.medals %> <br>
-                KDR: <%= (game.killDeathRatio).toPrecision(3) %> <br>
-                HSR: <%= (game.headshotRate).toPrecision(2) %> <br>
-                Played: <%= game.playedAt %><br>
-                Played at Regency: <%= game.playedAtRecency %>
-              </small>
-              
-        </li><br>
-    <% }) %> 
-</ol>
+
 <!-- 
 {
     "gamertag": "pinkpanther836",

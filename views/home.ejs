@@ -19,8 +19,12 @@
         <div class="column" id="homepage-column">
             <h2>Halo 5</h2>
             <% if (currentUser) {%>
-                <li><a href="/profile/">My Profile</a></li>
+                <li><a href="/profile/">Go to Profile</a></li>
                 <br> 
+                <br>
+                <li><a href="/h5/stats">Recent Games</a></li> 
+                <br>
+                <li><a href="/h5/strategies">Strategies</a></li> 
                 <br>
             <% } else { %>
                 <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info!                 <br>
@@ -33,9 +37,14 @@
         <div class="column"id="homepage-column">
             <h2>Halo MCC</h2>
             <% if (currentUser) {%>
-                <li><a href="#">My Game</a></li><br>
+                <li><a href="/profile/">Go to Profile</a></li>
+                <br> 
+                <br>
+                <li><a href="/mcc/hist">Recent Games</a></li> 
+                <br>
+                <li><a href="/mcc/strategies">Strategies</a></li> 
+                <br>
             <% } else { %>
-
                 <a href="/auth/login">Sign-in</a> or <a href="/auth/signup">Create an Account</a> to Save Game Info! 
            <% } %>
 

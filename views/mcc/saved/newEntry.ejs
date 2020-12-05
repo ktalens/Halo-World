@@ -1,0 +1,179 @@
+<h2>HALO MCC: NEW STRATEGY</h2>
+<div class="page-display row">
+    <form method="POST" action="/mcc/strategies/new" id="strategy-form-mcc">
+
+        <label for="weapChoiceType">Weapon: </label>
+        <select form="strategy-form-mcc" name="weapChoiceName" id="weapChoiceName">
+            <optgroup label="Short-/Mid-Range">
+                <option value="Magnum">Magnum (pistol)</option>
+                <option value="Assault Rifle">Assault Rifle</option>
+                <option value="Suppressed SMG">Suppressed SMG</option>
+                <option value="Suppressed SMG">Railgun</option>
+                <option value="Battle Rifle">Battle Rifle</option>
+                <option value="Shotgun">Shotgun</option>
+                <option value="Plasma Pistol">Plasma Pistol</option>
+                <option value="Plasma Rifle">Plasma Rifle</option>
+                <option value="Needler">Needler</option>
+            </optgroup>
+            <optgroup label="Long-Range">
+                <option value="Carbine">Carbine</option>
+                <option value="Particle Beam Rifle">Particle Beam Rifle</option>
+                <option value="DMR">DMR</option> 
+                <option value="Sniper Rifle">Sniper Rifle</option>
+                <option value="Storm Rifle">Storm Rifle</option>
+                <option value="LightRifle">LightRifle</option>
+            </optgroup>
+            <optgroup label="Tactical Explosives">
+                <option value="Fragmentation Grenade">Fragmentation Grenade</option>
+                <option value="Plasma Grenade">Plasma Grenade</option>
+            </optgroup>
+            <optgroup label="Heavy">
+                <option value="Brute Shot">Brute Shot</option>
+                <option value="Rocket Launcher">Rocket Launcher</option>
+                <option value="Fuel Rod Cannon">Fuel Rod Cannon</option>
+                <option value="Flamethrower">Flamethrower</option>
+                <option value="Sentinel Beam">Sentinel Beam</option>
+            </optgroup>
+            <optgroup label="Power">
+                <option value="Energy Sword">Energy Sword</option>
+                <option value="Gravity Hammer">Gravity Hammer</option>
+                <option value="Prophet's Bane">Prophet's Bane (Sword)</option>
+                <option value="Fist of Rukt">Fist of Rukt (Hammer)</option>
+            </optgroup>
+            <optgroup label="Turret">
+                <option value="Stationary Turret">Stationary Turret</option>
+                <option value="Plasma Turret">Plasma Turret</option>
+                <option value="Shade Turret">Shade Turret</option>
+                <option value="Detachable Turret">Detachable Turret</option>
+            </optgroup>
+            <optgroup label="Vehicle">
+                <option value="Scorpion">Scorpion</option>
+                <option value="Warthog">Warthog</option>
+                <option value="Banshee">Banshee</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Wraith">Wraith</option>
+                <option value="Spectre">Spectre</option>
+            </optgroup>
+        </select>
+
+        <label for="mapChoiceName">Location: </label>
+        <select form="strategy-form-mcc" name="mapChoiceName" id="mapChoiceName" >
+            <optgroup label="Halo 2" >
+                <option value="Ascenscion">Ascenscion</option>
+                <option value="Backwash">Backwash</option>
+                <option value="Beaver Creek">Beaver Creek</option>
+                <option value="Burial Mounds">Burial Mounds</option>
+                <option value="Coagulation">Coagulation</option>
+                <option value="Colossus">Colossus</option>
+                <option value="Containment">Containment</option>
+                <option value="Desolation">Desolation</option>
+                <option value="District">District</option>
+                <option value="Elongation">Elongation</option>
+                <option value="Foundation">Foundation</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Headlong">Headlong</option>
+                <option value="Ivory Tower">Ivory Tower</option>
+                <option value="Lockout">Lockout</option>
+                <option value="Midship">Midship</option>
+                <option value="Relic">Relic</option>
+                <option value="Sanctuary">Sanctuary</option>
+                <option value="Terminal">Terminal</option>
+                <option value="Tombstone">Tombstone</option>
+                <option value="Turf">Turf</option>
+                <option value="Uplift">Uplift</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Waterworks">Waterworks</option>
+                <option value="Zanzibar">Zanzibar</option>
+            </optgroup>
+            <optgroup label="Halo 2 Anniversary">
+                <option value="Awash">Awash</option>
+                <option value="Bloodline">Bloodline</option>
+                <option value="Lockdown">Lockdown</option>
+                <option value="Nebula">Nebula</option>
+                <option value="Remnant">Remnant</option>
+                <option value="Shrine">Shrine</option>
+                <option value="Skyward">Skyward</option>
+                <option value="Stonetown">Stonetown</option>
+                <option value="Warlord">Warlord</option>
+                <option value="Zenith">Zenith</option>
+            </optgroup>
+            <optgroup label="Halo 3">
+                <option value="Assembly">Assembly</option>
+                <option value="Avalanche">Avalanche</option>
+                <option value="Blackout">Blackout</option>
+                <option value="Citadel">Citadel</option>
+                <option value="Cold Storage">Cold Storage</option>
+                <option value="Construct">Construct</option>
+                <option value="Epitaph">Epitaph</option>
+                <option value="Foundry">Foundry</option>
+                <option value="Ghost Town">Ghost Town</option>
+                <option value="Guardian">Guardian</option>
+                <option value="Heretic">Heretic</option>
+                <option value="High Ground">High Ground</option>
+                <option value="Isolation">Isolation</option>
+                <option value="Last Resort">Last Resort</option>
+                <option value="Longshore">Longshore</option>
+                <option value="Narrows">Narrows</option>
+                <option value="Orbital">Orbital</option>
+                <option value="Rat's Nest">Rat's Nest</option>
+                <option value="Sandbox">Sandbox</option>
+                <option value="Sandtrap">Sandtrap</option>
+                <option value="Snowbound">Snowbound</option>
+                <option value="Standoff">Standoff</option>
+                <option value="The Pit">The Pit</option>
+                <option value="Valhalla">Valhalla</option>
+            </optgroup>
+            <optgroup label="Halo 4">
+                <option value="Abandon">Abandon</option>
+                <option value="Adrift">Adrift</option>
+                <option value="Complex">Complex</option>
+                <option value="Daybreak">Daybreak</option>
+                <option value="Erosion">Erosion</option>
+                <option value="Exile">Exile</option>
+                <option value="Forge Island">Forge Island</option>
+                <option value="Harvest (map)">Harvest (map)</option>
+                <option value="Haven">Haven</option>
+                <option value="Impact">Impact</option>
+                <option value="Landfall">Landfall</option>
+                <option value="Longbow">Longbow</option>
+                <option value="Meltdown">Meltdown</option>
+                <option value="Monolith">Monolith</option>
+                <option value="Outcast">Outcast</option>
+                <option value="Perdition">Perdition</option>
+                <option value="Pitfall">Pitfall</option>
+                <option value="Ragnarok">Ragnarok</option>
+                <option value="Ravine">Ravine</option>
+                <option value="Shatter">Shatter</option>
+                <option value="Skyline (level)">Skyline (level)</option>
+                <option value="Solace">Solace</option>
+                <option value="Vertigo">Vertigo</option>
+                <option value="Vortex">Vortex</option>
+                <option value="Wreckage">Wreckage</option>
+            </optgroup>
+            <optgroup label="Halo CE">
+                <option value="Battle Creek">Battle Creek</option>
+                <option value="Damnation">Damnation</option>
+                <option value="Rat Race">Rat Race</option>
+                <option value="Prisoner">Prisoner</option>
+                <option value="Hang Em High">Hang Em High</option>
+                <option value="Chill Out">Chill Out</option>
+                <option value="Derelict">Derelict</option>
+                <option value="Wizard">Wizard</option>
+                <option value="Boarding Action">Boarding Action</option>
+                <option value="Chiron TL34">Chiron TL34</option>
+                <option value="Longest">Longest</option>
+                <option value="Sidewinder">Sidewinder</option>
+                <option value="Blood Gulch">Blood Gulch</option>
+                <option value="Battle Creek">Boarding Action</option>
+            </optgroup>
+        </select>
+        <br>
+
+        <label for="description">Enter a strategy: </label><br>
+        <textarea class="enter-strategy" type="text" name="description" id="description"></textarea>
+        <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
+        <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
+        <br>
+        <input type="submit">
+    </form>
+</div>

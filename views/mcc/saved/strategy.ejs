@@ -1,0 +1,45 @@
+<h2>HALO MCC: GAME STRATEGIES</h2>
+
+<button><a href="/mcc/strategies/new">Add a Strategy</a></button>
+
+<div class="page-display row">
+    <% if(entries.length > 0){ %> 
+        <%  entries.forEach(entry=>{ %> 
+            <div class="column">
+                <h3>DETAILS:</h3>
+                <div class="tab-figures">
+                    <figure>
+                        <img height="75px" src="<%= entry.weapons[0].smallIconImageUrl %>">
+                        <figcaption><%= entry.weapons[0].name %></figcaption>
+                    </figure>
+                    <figure>
+                        <img height="100px" src="<%= entry.maps[0].imageUrl %>">
+                        <figcaption><%= entry.maps[0].name %></figcaption>
+                    </figure><br>
+                </div>
+                ADDED: <%= entry.createdAt %> <br>
+                WEAPON TYPE: <%= entry.weapons[0].type %><br>
+                MAP MODES: (Coming Soon...)<br>
+                TEAMMATES: (Coming Soon...)<br>
+            </div>
+                        
+            <div class="column">
+                <h3>DESCRIPTION:</h3>
+                <div class="tabentry">
+                    <%= entry.description %>
+                </div>
+                <button><a href="/mcc/strategies/edit/<%= entry.id  %>">Edit</a></button>
+                <form method="POST" action="/mcc/strategies/<%= entry.id %>/?_method=DELETE ">
+                    <input type="hidden" type="text" name="stratId" value="<%= entry.id %> ">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>  
+        <% }) %>
+    <% } else {%> 
+    <%= 'No Entries to display yet!' %>     
+    <% } %> 
+</div>
+
+    
+    
+    
