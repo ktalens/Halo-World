@@ -13,27 +13,29 @@
                 <h3>MY PLAYBOOK</h3><br>
                 <div class="tabentry">
                     <h5>STRATEGIES</h5>
-                    <span class="span-tab"><%= userData.strategies.length %> items</span><br>
+                    <% let mccStrategies=userData.strategies.filter(allStrat=>{return(allStrat.gameId==4)}) %> 
+                    <span class="span-tab"><%= mccStrategies.length %> items</span>
+                    <% mccStrategies.forEach(strat=>{ %>
+                        <li><%= strat.description %> </li>
+                    <% }) %> 
                     <a href="/mcc/strategies">Strategies</a>
                 </div>
                 <div class="tabentry">
                     <h5>WEAPONS</h5>
-                    <span class="span-tab"><%= userData.weapons.length %> items</span><br>
+                    <% let mccWeapons=userData.weapons.filter(allWeap=>{return(allWeap.type=='MCC')}) %> 
+                    <span class="span-tab"><%= mccWeapons.length %> items</span><br>
                     <ul>
-                        <% userData.weapons.forEach((weapon)=>{ %>
-                            <% if(weapon.type=='MCC'){ %> 
-                                <li id="<%= weapon.id %>"><%= weapon.name %></li><br>
-                            <% } %> 
+                        <% mccWeapons.forEach(mccWeap=>{ %>
+                            <li id="<%= mccWeap.id %>"><%= mccWeap.name %></li><br>
                         <% }) %>
                     </ul>
                 </div>
                 <div class="tabentry">
                     <h5>MAPS</h5>
-                    <span class="span-tab"><%= userData.maps.length %> items</span><br>
-                    <% userData.maps.forEach((map)=>{ %>
-                        <% if(map.type=='MCC'){ %> 
-                            <li id="<%= map.id %>"><%= map.name %></li><br>
-                        <% } %> 
+                    <% let mccMaps=userData.maps.filter(allMap=>{return(allMap.type=='MCC')}) %> 
+                    <span class="span-tab"><%= mccMaps.length %> items</span>
+                    <% mccMaps.forEach((map)=>{ %>
+                        <li id="<%= map.id %>"><%= map.name %></li><br>
                     <% }) %>  
                 </div>
                 <div class="tabentry">
@@ -54,55 +56,56 @@
                 <h3>MY PLAYBOOK</h3><br>
                 <div class="tabentry">
                     <h5>STRATEGIES</h5>
-                    <span class="span-tab"><%= userData.strategies.length %> items</span><br>
+                    <% let h5Strategies=userData.strategies.filter(allStrat=>{return(allStrat.gameId==5)}) %> 
+                    <span class="span-tab"><%= h5Strategies.length %> items</span><br>
                     <ul>
-                        <% userData.strategies.forEach((entry)=>{ %>
-                            <% if(entry.gameId==5){ %> 
+                        <% h5Strategies.forEach((entry)=>{ %>
                                 <li><%= entry.description %></li><br>
-                            <% } %> 
-                        <% }) %>
+                        <% }) %> 
                     </ul>
                     <a href="/h5/saved/strategies">Saved Strategies</a><br>
                 </div> 
                 <div class="tabentry">
                     <h5>WEAPONS</h5>
-                    <span class="span-tab"><%= userData.weapons.length %> items</span><br>
-                    <ul>
-                        <% userData.weapons.forEach((weapon)=>{ %>
-                            <% if(weapon.type!=='MCC'){ %>
-                                <div class="entry-data">
-                                    <li id="<%= weapon.id %>"><figure>
-                                        <img height="75px" src="<%= weapon.smallIconImageUrl %>">
-                                        <figcaption><%= weapon.name %></figcaption>
-                                    </figure></li>
-                                    <details>
-                                        <% halo5.WeaponStats.forEach(gameWeap=>{  %>
-                                            <% if(gameWeap.WeaponId.StockId==weapon.weaponId){ %>
-                                            <small>
-                                                Fired: <%= gameWeap.TotalShotsFired %> <br>
-                                                Landed: <%= gameWeap.TotalShotsLanded %> <br>
-                                                Headshots: <%= gameWeap.TotalHeadshots %> <br>
-                                                Kills: <%= gameWeap.TotalKills %> <br>
-                                            </small>
-                                            <% } %> 
-                                        <% })   %>
-                                    </details>
-                                </div>
-                            <% } %> 
+                    <% let h5Weapons=userData.weapons.filter(allWeap=>{return(allWeap.type!=='MCC')}) %> 
+                    <span class="span-tab"><%= h5Weapons.length %> items</span><br>                    
+                    <ul>   
+                        <% h5Weapons.forEach(h5Weap=>{ %>
+                            <div class="entry-data">
+                                <li id="<%= h5Weap.id %>">
+                                    <figure>
+                                        <img height="75px" src="<%= h5Weap.smallIconImageUrl %>">
+                                        <figcaption><%= h5Weap.name %></figcaption>
+                                        </figure>
+                                </li>
+                                <details>
+                                    <% halo5.WeaponStats.forEach(gameWeap=>{  %>
+                                        <% if(gameWeap.WeaponId.StockId==h5Weap.weaponId){ %>
+                                        <small>
+                                            Fired: <%= gameWeap.TotalShotsFired %> <br>
+                                            Landed: <%= gameWeap.TotalShotsLanded %> <br>
+                                            Headshots: <%= gameWeap.TotalHeadshots %> <br>
+                                            Kills: <%= gameWeap.TotalKills %> <br>
+                                        </small>
+                                        <% } %> 
+                                    <% })   %>
+                                </details>
+                            </div>
                         <% }) %>
                     </ul>
                     <a href="/h5/saved/weapons">Go to saved weapons</a><br>
                 </div>
                 <div class="tabentry">
                     <h5>MAPS</h5>
-                    <span class="span-tab"><%= userData.maps.length %> items</span><br>
-                    <% userData.maps.forEach((map)=>{ %>
-                        <% if(map.type!=='MCC'){ %> 
-                            <li id="<%= map.id %>"><figure>
-                                <img height="75px" src="<%= map.imageUrl %>">
-                                <figcaption><%= map.name %></figcaption>
-                            </figure></li><br>
-                        <% } %> 
+                    <% let h5Maps=userData.maps.filter(allMap=>{return(allMap.type!=='MCC')}) %> 
+                    <span class="span-tab"><%= h5Maps.length %> items</span><br>
+                    <% h5Maps.forEach((map)=>{ %>
+                        <li id="<%= map.id %>">
+                            <figure>
+                            <img height="75px" src="<%= map.imageUrl %>">
+                            <figcaption><%= map.name %></figcaption>
+                            </figure>
+                        </li><br>
                     <% }) %>
                     <a href="/h5/saved/maps">Go to saved maps</a><br>   
                 </div>

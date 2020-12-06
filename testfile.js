@@ -127,22 +127,21 @@ const db = require("./models");
 //     TotalPossessionTime: string;
 // }[]
 
-db.user.findOne(
-    {where: {id: 1}
+db.user.findOne({
+    where: {id: 3},
+    include: [db.weapon,db.map,db.strategy]
 })
 .then(foundUser=>{
-    foundUser.getStrategies({
-        include: [db.weapon,db.map]
+    //console.log(Object.keys(foundUser.dataValues))
+    let hMccWeapons=foundUser.weapons.filter(allWeap=>{return(allWeap.type=='MCC')})
+    hMccWeapons.forEach(mccWeap=>{
+        console.log(mccWeap.name)
     })
-    .then(foundStrategies=>{
-        foundStrategies.forEach(entry=>{
-            console.log(entry.description,entry.weapons[0].name)
-        })
-    })
-    .catch(err=>{
-        console.log(err.message)
-    })
+    //console.log(hMccWeapons.length)
 })
 .catch(err=>{
     console.log(err.message)
 })
+
+//  <% let mccWeapons=foundUser.weapons.filter(allWeap=>{return(allWeap.type=='MCC')}) %> 
+//                      <span class="span-tab"><%= mccWeapons.length %> items</span><br></br>
