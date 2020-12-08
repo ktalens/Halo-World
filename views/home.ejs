@@ -1,6 +1,6 @@
 <h2>HOME</h2>
 
-<section>
+<div class="page-display row">
     <h3>QUICK SEARCH:</h3>
     <form method="POST" action="/" id="gamertagSearch">
         <label for="gamertag">Stats by Gamertag:</label>
@@ -10,9 +10,11 @@
             <option value="halo5">Halo 5</option>
             <option value="haloW2">Halo Wars 2</option>
         </select>
-        <input type="submit" value="Go">
+        <input type="submit" value="GO" class="page-disp-button">
     </form>
-<%- include('partials/quickSearchResults.ejs') %> 
+    <%- include('partials/quickSearchResults.ejs') %> 
+</div>
+    
 </section>
 <main id="homepage">
     <div class="row" id="homepage-row">

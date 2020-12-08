@@ -128,14 +128,14 @@ const db = require("./models");
 // }[]
 
 db.user.findOne({
-    where: {id: 3},
+    where: {id: 2},
     include: [db.weapon,db.map,db.strategy]
 })
 .then(foundUser=>{
     //console.log(Object.keys(foundUser.dataValues))
-    let hMccWeapons=foundUser.weapons.filter(allWeap=>{return(allWeap.type=='MCC')})
+    let hMccWeapons=foundUser.weapons.filter(allWeap=>{return(allWeap.type!=='MCC')})
     hMccWeapons.forEach(mccWeap=>{
-        console.log(mccWeap.name)
+        console.log(`NAME: ${mccWeap.name}, ID: ${mccWeap.weaponId}`)
     })
     //console.log(hMccWeapons.length)
 })
@@ -145,3 +145,24 @@ db.user.findOne({
 
 //  <% let mccWeapons=foundUser.weapons.filter(allWeap=>{return(allWeap.type=='MCC')}) %> 
 //                      <span class="span-tab"><%= mccWeapons.length %> items</span><br></br>
+
+List of relations
+Schema |       Name       | Type  |     Owner      
+--------+------------------+-------+----------------
+public | SequelizeMeta    | table | fhoiimhdqlruqi
+public | mapStrategies    | table | fhoiimhdqlruqi
+public | maps             | table | fhoiimhdqlruqi
+public | strategies       | table | fhoiimhdqlruqi
+public | users            | table | fhoiimhdqlruqi
+public | weaponStrategies | table | fhoiimhdqlruqi
+public | weapons          | table | fhoiimhdqlruqi
+(7 rows)
+
+SELECT users.gamertag,
+maps.name 
+FROM users LEFT JOIN "maps" ON ("maps"."userId"=users.id);
+SELECT * FROM weapons;
+SELECT * FROM "weaponStrategies";
+SELECT * FROM strategies;
+
+ALTER TABLE "weapons" RENAME COLUMN "weapId" TO "weaponId";

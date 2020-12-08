@@ -180,7 +180,8 @@
         <input type="hidden" type="text" name="userId" value="<% if(currentUser){  %><%= currentUser.dataValues.id %><% }else{ %><%= 'test1' %><% } %>">
         <input type="hidden" type="text" name="gamertag" value="<% if(currentUser){  %><%= currentUser.dataValues.gamertag %><% }else{ %><%= 'VeryCerebral' %><% } %>">
         <br>
-        <input type="submit" value="Update">
+        <span class="span-tab"><input type="submit" value="UPDATE" class="page-disp-button"></span>
+        
     </form>
 </div>
 <small>(ID: <%= prevValues.id %> )</small>

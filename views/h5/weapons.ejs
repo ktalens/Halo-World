@@ -1,17 +1,22 @@
 <div class="page-display row">
     <h2>HALO 5 WEAPONS</h2>
+    <span class="span-tab"><button class="page-disp-button"><a href="/h5/maps">ADD MAPS</a></button>
+        <button class="page-disp-button"><a href="/h5/saved/strategies/">SEE STRATEGIES</a></button>
+    </span>
+    <form method="GET" action="/h5/weapons" id="weaponform">
+        <label for="weapons">Weapons:</label>
+        <select id="weapons" name="id" form="weaponform">
+            <% weaponsList.forEach(weap=>{ %> 
+                <% if(weap.isUsableByPlayer=== true){ %>
+                    <option value="<%= weap.id %>"><%= weap.name %></option> 
+                <% } %> 
+            <%  }) %> 
+        </select>
+        <input type="submit" value="GO" class="page-disp-button">
+    </form>
+</div>
+<div class="page-display row">
     <div class="column" id="items-list">   
-        <form method="GET" action="/h5/weapons" id="weaponform">
-            <label for="weapons">Weapons:</label>
-            <select id="weapons" name="id" form="weaponform">
-                <% weaponsList.forEach(weap=>{ %> 
-                    <% if(weap.isUsableByPlayer=== true){ %>
-                        <option value="<%= weap.id %>"><%= weap.name %></option> 
-                    <% } %> 
-                <%  }) %> 
-            </select>
-            <input type="submit" value="Go">
-        </form>
         <ul >
             <%  weaponsData.forEach(item=>{ %> 
                 <% if(item.isUsableByPlayer=== true){ %>
@@ -28,7 +33,7 @@
                                     <input type="hidden" type="text" name="name" value="<%= item.name %>">
                                     <input type="hidden" type="text" name="description" value="<%= item.description %>">
                                     <input type="hidden" type="text" name="smallIconImageUrl" value="<%= item.smallIconImageUrl %>">
-                                <input type="submit" value="favorite" >
+                                <input type="submit" value="ADD"  class="page-disp-button">
                                 </form>
                             </div>
                             <div class="game-item" id="game-item-desc">

@@ -16,7 +16,7 @@
                     <% let mccStrategies=userData.strategies.filter(allStrat=>{return(allStrat.gameId==4)}) %> 
                     <span class="span-tab"><%= mccStrategies.length %> items</span>
                     <% mccStrategies.forEach(strat=>{ %>
-                        <li><%= strat.description %> </li>
+                        <li><%= strat.description %> </li><br>
                     <% }) %> 
                     <a href="/mcc/strategies">Strategies</a>
                 </div>

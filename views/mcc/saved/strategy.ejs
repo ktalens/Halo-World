@@ -1,6 +1,9 @@
-<h2>HALO MCC: GAME STRATEGIES</h2>
-
-<button><a href="/mcc/strategies/new">Add a Strategy</a></button>
+<div class="page-display row">
+    <h2>HALO MCC: GAME STRATEGIES</h2>
+<span class="span-tab">
+    <button class="page-disp-button"><a href="/mcc/strategies/new">ADD A STRATEGY</a></button>
+</span>
+</div>
 
 <div class="page-display row">
     <% if(entries.length > 0){ %> 
@@ -28,11 +31,12 @@
                 <div class="tabentry">
                     <%= entry.description %>
                 </div>
-                <button><a href="/mcc/strategies/edit/<%= entry.id  %>">Edit</a></button>
-                <form method="POST" action="/mcc/strategies/<%= entry.id %>/?_method=DELETE ">
-                    <input type="hidden" type="text" name="stratId" value="<%= entry.id %> ">
-                    <input type="submit" value="Delete">
-                </form>
+                <span class="span-tab"><button class="page-disp-button"><a href="/mcc/strategies/edit/<%= entry.id  %>">EDIT</a></button>
+                    <form method="POST" action="/mcc/strategies/<%= entry.id %>/?_method=DELETE ">
+                        <input type="hidden" type="text" name="stratId" value="<%= entry.id %> ">
+                        <input type="submit" value="DELETE" class="page-disp-button">
+                    </form>
+                </span>
             </div>  
         <% }) %>
     <% } else {%> 

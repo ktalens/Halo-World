@@ -1,15 +1,22 @@
-<h2>HALO 5 GAME BASE VARIANTS</h2>
-
-<ul>
-    <%  gbvData.forEach(item=>{ %> 
-        <img src=<%= item.iconUrl %> height="40px" >
-        <li> 
-            Name: <%= item.name %> <br>
-            (Internal Name: <%= item.internalName %> )<br>
-            <input type= "hidden" name="gbvId" value="<%= item.id %> ">
-        </li>
-    <% }) %> 
-</ul>
+<div class="page-display row">
+    <h2>HALO 5 GAME BASE VARIANTS</h2>
+    <span class="span-tab">
+        <button class="page-disp-button"><a href="/h5/maps">SEE MAPS</a></button>
+        <button class="page-disp-button"><a href="/h5/weapons">SEE WEAPONS</a></button>
+    </span> 
+    <ul>
+        <%  gbvData.forEach(item=>{ %> 
+            <div class="tabentry">
+                <img src=<%= item.iconUrl %> height="40px" >
+                <li> 
+                    Name: <%= item.name %> <br>
+                    (Internal Name: <%= item.internalName %> )<br>
+                    <input type= "hidden" name="gbvId" value="<%= item.id %> ">
+                </li>
+            </div>
+        <% }) %> 
+    </ul>
+</div>
 
 
 <!-- 

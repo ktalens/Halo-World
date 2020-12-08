@@ -1,7 +1,12 @@
 <div class="page-display row">
   <h2>MY WEAPONS</h2>
+  <span class="span-tab">
+    <button class="page-disp-button"><a href="/h5/weapons">ADD MORE WEAPONS</a></button>
+    <button class="page-disp-button"><a href="/h5/saved/maps">SEE MY MAPS</a></button>
+    <button class="page-disp-button"><a href="/h5/saved/strategies/">SEE STRATEGIES</a></button>
+  </span>
+
   <div class="column" id="items-list">
-    <span class="span-tab"><button class="page-disp-button"><a href="/h5/weapons">ADD MORE</a></button></span>
     <ul >
       <%  savedItems.forEach(user=>{ %> 
           <% if(currentUser.dataValues.id===user.id){ %>
@@ -15,7 +20,7 @@
                       <form method="POST" action="/h5/saved/weapons/<%= savedWeap.id  %>/?_method=DELETE ">
                           <input type="hidden" type="text" name="weapId" value="<%= savedWeap.id %>">
                           <input type="hidden" type="text" name="userId" value="<%= user.id %>">
-                          <input type="submit" value="Remove">
+                          <input type="submit" value="REMOVE" class="page-disp-button">
                       </form>
                   </div>
                   <div class="game-item" id="game-item-desc">

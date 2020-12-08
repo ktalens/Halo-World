@@ -1,7 +1,7 @@
 
-    <div class="page-display row">
+    <section>
         <% if(gamerInfo) { %>
-            <h4>GAMERTAG:  <%=  gamerInfo.gamertag %>       ||       GAME: <%= gamerInfo.haloGame %> <br></h4> <br>
+            <h4>RESULTS FOR:  <%=  gamerInfo.gamertag %>       ||       GAME: <%= gamerInfo.haloGame %> <br></h4> <br>
             <div class="column">
                 <h4>PLAYER DATA<i>(based on last 5 matches):</i></h4>
                 Avg Kills: <%=  gamerInfo.avgKills %> <br>
@@ -37,4 +37,4 @@
                 Time Played: <%= lastGame.timePlayed %> <br>
             </div> 
         <% } %>
-    </div>
+</section>
